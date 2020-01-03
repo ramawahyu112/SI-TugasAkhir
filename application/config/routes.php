@@ -38,7 +38,7 @@
 |
 */
 
-$route['default_controller'] = "ruangbelajar";
+$route['default_controller'] = "tugasakhir";
 $route['404_override'] = '';
 
 

@@ -14,7 +14,7 @@
 | path to your installation.
 |
 */
-$config['base_url']	= 'http://localhost/SIRuangBelajar';
+$config['base_url']	= 'http://localhost/SITugasAkhir';
 
 /*
 |--------------------------------------------------------------------------

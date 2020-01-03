@@ -27,7 +27,7 @@
             <div class="modal-content">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">x</button>
-                <h3 class="modal-title" id="myModalLabel">Add User</h3>
+                <h3 class="modal-title" id="myModalLabel">Add Data Jurusan</h3>
             </div>
             <form class="form-horizontal" method="post" action="<?php echo site_url('ruangbelajar/addjenjang');?>">
                 <div class="modal-body">
@@ -79,8 +79,10 @@
                   <thead>
                     <tr>
                       <th>No</th>
-                      <th>Nama Jenjang</th>
-                      <th>Status</th>
+                      <th>Kode Jurusan</th>
+                      <th>Nama Jurusan</th>
+                      <th>Nama Ketua Jurusan</th>
+                      <th>Nomor Telepon</th>
                        <th>Action</th>
                     </tr>
                   </thead>
@@ -88,16 +90,18 @@
                    
                     <?php
                      $count = 0;
-                      foreach ($jenjang->result() as $row) :
+                      foreach ($jurusan->result() as $row) :
                         $count++; ?>
                   <tr>
                     <td><?php echo $count?></td>
-                    <td><?php echo $row->nama_jj;?></td>
-                    <td><?php echo $row->status;?></td>
+                    <td><?php echo $row->KodeJurusan;?></td>
+                    <td><?php echo $row->NamaJurusan;?></td>
+                    <td><?php echo $row->NamaKaJurusan;?></td>
+                    <td><?php echo $row->NoTelp;?></td>
                     <td>
-                      <a href="#" class="btn btn-sm btn-info" data-toggle="modal" data-target="#modal_edit<?php echo $row->id_jenjang;?>"> Update </a>
+                      <a href="#" class="btn btn-sm btn-info" data-toggle="modal" data-target="#modal_edit<?php echo $row->KodeJurusan;?>"> Update </a>
                  
-                      <a href="<?php echo site_url('ruangbelajar/deletejenjang/'.$row->id_jenjang);?>" class="btn btn-sm btn-danger">Delete</a>
+                      <a href="<?php echo site_url('tugasakhir/deletejurusan/'.$row->KodeJurusan);?>" class="btn btn-sm btn-danger">Delete</a>
                         
                       </td>
                   </tr>
@@ -118,35 +122,58 @@
 
        <!-- ============ MODAL EDIT BARANG =============== -->
     <?php
-        foreach($jenjang->result_array() as $i):
-            $nama_jj=$i['nama_jj'];
-            $status=$i['status'];
-            $id_jenjang=$i['id_jenjang'];
+        foreach($jurusan->result_array() as $i):
+            $KodeJurusan=$i['KodeJurusan'];
+            $NamaJurusan=$i['NamaJurusan'];
+            $NamaKaJurusan=$i['NamaKaJurusan'];
+             $NoTelp=$i['NoTelp'];
         ?>
-        <div class="modal fade" id="modal_edit<?php echo $id_jenjang;?>" tabindex="-1" role="dialog" aria-labelledby="largeModal"
+        <div class="modal fade" id="modal_edit<?php echo $KodeJurusan;?>" tabindex="-1" role="dialog" aria-labelledby="largeModal"
          aria-hidden="true">
             <div class="modal-dialog">
             <div class="modal-content">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">x</button>
-                <h3 class="modal-title" id="myModalLabel">Edit Jenjang</h3>
+                <h3 class="modal-title" id="myModalLabel">Edit Jurusan</h3>
             </div>
             <form class="form-horizontal" method="post" action="<?php echo site_url('ruangbelajar/addjenjang/'.$id_jenjang);?>">
                 <div class="modal-body">
  
                     <div class="form-group">
-                        <label class="control-label col-xs-3" >Nama Jenjang</label>
+                        <label class="control-label col-xs-3" >Nama Jurusan</label>
                         <div class="col-xs-8">
                             <input name="nama_jenjang" value="<?php echo $nama_jj;?>" class="form-control" type="text" placeholder="Masukkan nama jenjang" required>
                         </div>
                     </div>
 
-                    <div class="form-group">
-                        <label class="control-label col-xs-3" >Status</label>
+                  <div class="form-group">
+                        <label class="control-label col-xs-3" >Kode Jurusan</label>
                         <div class="col-xs-8">
-                            <input name="status_jenjang" value="<?php echo $status;?>" class="form-control" type="text" placeholder="Masukkan status" required>
+                            <input name="nama_jenjang" class="form-control" value="<?php echo $KodeJurusan;?>" type="text" placeholder="Masukkan nama jenjang" required>
                         </div>
                     </div>
+
+                    <div class="form-group">
+                        <label class="control-label col-xs-3" >Nama Jurusan</label>
+                        <div class="col-xs-8">
+                            <input name="nama_jenjang" class="form-control" value="<?php echo $NamaJurusan;?>" type="text" placeholder="Masukkan nama jenjang" required>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="control-label col-xs-3" >Nama Ketua Jurusan</label>
+                        <div class="col-xs-8">
+                            <input name="status_jenjang" class="form-control" value="<?php echo $NamaKaJurusan;?>" type="text" placeholder="Masukkan nama ketua jurusan" required>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="control-label col-xs-3" >Nomor Telepon</label>
+                        <div class="col-xs-8">
+                            <input name="nama_jenjang" class="form-control" value="<?php echo $NoTelp;?>" type="text" placeholder="Masukkan nomor telepon" required>
+                        </div>
+                    </div>
+
  
  
                 </div>

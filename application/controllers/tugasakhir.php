@@ -1,6 +1,6 @@
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
-class ruangbelajar extends CI_Controller {
+class tugasakhir extends CI_Controller {
 
 
 	function __construct()
@@ -28,7 +28,7 @@ class ruangbelajar extends CI_Controller {
 	function deleteakun(){
     $id_user = $this->uri->segment(3);
     $this->akun_model->delete($id_user);
-    redirect('ruangbelajar/akun');
+    redirect('tugasakhir/akun');
 }
 
 
@@ -48,7 +48,7 @@ function addakun(){
 
 	}
 	
-    redirect('ruangbelajar/akun');
+    redirect('tugasakhir/akun');
 }
 
 
@@ -65,7 +65,7 @@ function addakun(){
 	function deletejenjang(){
     $id_jenjang = $this->uri->segment(3);
     $this->jenjang_model->delete($id_jenjang);
-    redirect('ruangbelajar/jenjang');
+    redirect('tugasakhir/jenjang');
 }
 
 function addjenjang(){
@@ -81,7 +81,7 @@ function addjenjang(){
 
 	}
 	
-    redirect('ruangbelajar/jenjang');
+    redirect('tugasakhir/jenjang');
 }
 
 
@@ -99,7 +99,7 @@ function addjenjang(){
 // 	function deletejenjang(){
 //     $id_jenjang = $this->uri->segment(3);
 //     $this->jenjang_model->delete($id_jenjang);
-//     redirect('ruangbelajar/jenjang');
+//     redirect('tugasakhir/jenjang');
 // }
 
 // function addjenjang(){
@@ -115,7 +115,7 @@ function addjenjang(){
 
 // 	}
 	
-//     redirect('ruangbelajar/jenjang');
+//     redirect('tugasakhir/jenjang');
 // }
 
 
@@ -134,7 +134,7 @@ function addjenjang(){
 	function deletemapel(){
     $id_mapel = $this->uri->segment(3);
     $this->mapel_model->delete($id_mapel);
-    redirect('ruangbelajar/mapel');
+    redirect('tugasakhir/mapel');
 }
 
 function addmapel(){
@@ -150,7 +150,7 @@ function addmapel(){
 
 	}
 	
-    redirect('ruangbelajar/mapel');
+    redirect('tugasakhir/mapel');
 }
 
 
@@ -169,7 +169,7 @@ function addmapel(){
 	function deletemateri(){
     $id_materi = $this->uri->segment(3);
     $this->materi_model->delete($id_materi);
-    redirect('ruangbelajar/materi');
+    redirect('tugasakhir/materi');
 }
 
 function addmateri(){
@@ -188,7 +188,7 @@ function addmateri(){
 
 	}
 	
-    redirect('ruangbelajar/materi');
+    redirect('tugasakhir/materi');
 }
 
 
