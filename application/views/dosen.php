@@ -27,7 +27,7 @@
             <div class="modal-content">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">x</button>
-                <h3 class="modal-title" id="myModalLabel">Add DATA DOSEN</h3>
+                <h3 class="modal-title" id="myModalLabel">Add Data Dosen</h3>
             </div>
             <form class="form-horizontal" method="post" action="<?php echo site_url('tugasakhir/adddosen');?>">
                 <div class="modal-body">
@@ -42,7 +42,7 @@
                     <div class="form-group">
                         <label class="control-label col-xs-3" >NIDN</label>
                         <div class="col-xs-8">
-                            <input name="NIDN" class="form-control" type="text" placeholder="Masukkan NIDN required>
+                            <input name="NIDN" class="form-control" type="text" placeholder="Masukkan NIDN " required>
                         </div>
                     </div>
  
@@ -129,7 +129,7 @@
                       <th>Pendidikan Terakhir</th>
                       <th>Username</th>
                       <th>Password</th>
-                       <th>Action</th>
+                    <th>Action</th>
                     </tr>
                   </thead>
                   <tbody>

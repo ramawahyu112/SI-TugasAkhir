@@ -93,11 +93,11 @@
                       foreach ($prodi->result() as $row) :
                         $count++; ?>
                   <tr>
-                    <td><?php echo $count?></td>
-                    <td><?php echo $row->KodeProdi;?></td>>
-                    <td><?php echo $row->KodeJurusan;?></td>>
-                    <td><?php echo $row->NamaProdi;?></td>>
-                    <td><?php echo $row->NoTelp;?></td>>
+                    <td><?php echo $count;?></td>
+                    <td><?php echo $row->KodeProdi;?></td>
+                    <td><?php echo $row->KodeJurusan;?></td>
+                    <td><?php echo $row->NamaProdi;?></td>
+                    <td><?php echo $row->NoTelp;?></td>
                    <td>
                       <a href="#" class="btn btn-sm btn-info" data-toggle="modal" data-target="#modal_edit<?php echo $row->KodeProdi;?>"> Update </a>
                  
