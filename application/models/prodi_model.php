@@ -1,14 +1,14 @@
 <?php
 class prodi_model extends CI_Model {
 	
-	private $primary_key= 'id_mp';
-	private $table_name= 'tb_mapel';
+	private $primary_key= 'KodeProdi';
+	private $table_name= 'prodi';
 
 	function __construct(){
 		parent::__construct();
 	}
 
-	 function get_mapel(){
+	 function get_prodi(){
     $result = $this->db->get($this->table_name);
     return $result;
   }

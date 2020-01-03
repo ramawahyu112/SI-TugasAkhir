@@ -14,35 +14,49 @@
           <!-- DataTales Example -->
           <div class="card shadow mb-4">
             <div class="card-header py-3">
-              <h6 class="m-0 font-weight-bold text-primary">LIST DATA MATA PELAJARAN</h6>
+              <h6 class="m-0 font-weight-bold text-primary">LIST DATA PROGRAM STUDI</h6>
              
             </div>
              <div class="card-header py-9">
                <a href="#" class="btn btn-sm btn-success" data-toggle="modal" data-target="#modal_add_new"> Add </a>
              </div>
 
-<!-- ============ MODAL ADD BARANG =============== -->
+<!-- ============ MODAL ADD PRODI =============== -->
         <div class="modal fade" id="modal_add_new" tabindex="-1" role="dialog" aria-labelledby="largeModal" aria-hidden="true">
             <div class="modal-dialog">
             <div class="modal-content">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">x</button>
-                <h3 class="modal-title" id="myModalLabel">Add Mata Pelajaran</h3>
+                <h3 class="modal-title" id="myModalLabel">Add Program Studi</h3>
             </div>
-            <form class="form-horizontal" method="post" action="<?php echo site_url('ruangbelajar/addmapel');?>">
+            <form class="form-horizontal" method="post" action="<?php echo site_url('tugasakhir/addprodi');?>">
                 <div class="modal-body">
- 
-                    <div class="form-group">
-                        <label class="control-label col-xs-3" >Nama Mata Pelajaran</label>
+
+                  <div class="form-group">
+                        <label class="control-label col-xs-3" >Kode Program Studi</label>
                         <div class="col-xs-8">
-                            <input name="namamapel" class="form-control" type="text" placeholder="Masukkan mata pelajaran" required>
+                            <input name="KodeProdi" class="form-control" type="text" placeholder="Masukkan Kode Program Studi" required>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="control-label col-xs-3" >Kode Jurusan</label>
+                        <div class="col-xs-8">
+                            <input name="KodeJurusan" class="form-control" type="text" placeholder="Masukkan Kode Jurusan" required>
                         </div>
                     </div>
  
                     <div class="form-group">
-                        <label class="control-label col-xs-3" >Jenjang</label>
+                        <label class="control-label col-xs-3" >Nama Program Studi</label>
                         <div class="col-xs-8">
-                            <input name="jenjang" class="form-control" type="text" placeholder="Masukkan jenjang" required>
+                            <input name="NamaProdi" class="form-control" type="text" placeholder="Masukkan Program Studi" required>
+                        </div>
+                    </div>
+ 
+                    <div class="form-group">
+                        <label class="control-label col-xs-3" >No. Telepon</label>
+                        <div class="col-xs-8">
+                            <input name="NoTelp" class="form-control" type="text" placeholder="Masukkan No. Telepon" required>
                         </div>
                     </div>
  
@@ -57,7 +71,7 @@
             </div>
             </div>
         </div>
-        <!--END MODAL ADD BARANG-->
+        <!--END MODAL ADD PRODI-->
 
             <div class="card-body">
               <div class="table-responsive">
@@ -65,8 +79,10 @@
                   <thead>
                     <tr>
                       <th>No</th>
-                      <th>Nama Mata Pelajaran</th>
-                      <th>Jenjang</th>
+                      <th>Kode Program Studi</th>
+                      <th>Kode Jurusan</th>
+                      <th>Nama Program Studi</th>
+                      <th>No. Telepon</th>
                        <th>Action</th>
                     </tr>
                   </thead>
@@ -74,16 +90,18 @@
                    
                     <?php
                      $count = 0;
-                      foreach ($mapel->result() as $row) :
+                      foreach ($prodi->result() as $row) :
                         $count++; ?>
                   <tr>
                     <td><?php echo $count?></td>
-                    <td><?php echo $row->nama_mp;?></td>>
-                    <td><?php echo $row->id_jenjang;?></td>
-                    <td>
-                      <a href="#" class="btn btn-sm btn-info" data-toggle="modal" data-target="#modal_edit<?php echo $row->id_mp;?>"> Update </a>
+                    <td><?php echo $row->KodeProdi;?></td>>
+                    <td><?php echo $row->KodeJurusan;?></td>>
+                    <td><?php echo $row->NamaProdi;?></td>>
+                    <td><?php echo $row->NoTelp;?></td>>
+                   <td>
+                      <a href="#" class="btn btn-sm btn-info" data-toggle="modal" data-target="#modal_edit<?php echo $row->KodeProdi;?>"> Update </a>
                  
-                      <a href="<?php echo site_url('ruangbelajar/deletemapel/'.$row->id_mp);?>" class="btn btn-sm btn-danger">Delete</a>
+                      <a href="<?php echo site_url('tugasakhir/deleteprodi/'.$row->KodeProdi);?>" class="btn btn-sm btn-danger">Delete</a>
 
 
                         
@@ -104,34 +122,49 @@
 
 
 
-       <!-- ============ MODAL EDIT BARANG =============== -->
+       <!-- ============ MODAL EDIT PRODI =============== -->
     <?php
-        foreach($mapel->result_array() as $i):
-            $id_mp=$i['id_mp'];
-             $nama_mp=$i['nama_mp'];
-            $id_jenjang=$i['id_jenjang'];
-        ?>
-        <div class="modal fade" id="modal_edit<?php echo $id_mp;?>" tabindex="-1" role="dialog" aria-labelledby="largeModal"
+        foreach($prodi->result_array() as $i):
+             $KodeProdi=$i['KodeProdi'];
+             $KodeJurusan=$i['KodeJurusan'];
+             $NamaProdi=$i['NamaProdi'];
+             $NoTelp=$i['NoTelp'];
+             ?>
+        <div class="modal fade" id="modal_edit<?php echo $KodeProdi;?>" tabindex="-1" role="dialog" aria-labelledby="largeModal"
          aria-hidden="true">
             <div class="modal-dialog">
             <div class="modal-content">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">x</button>
-                <h3 class="modal-title" id="myModalLabel">Edit User</h3>
+                <h3 class="modal-title" id="myModalLabel">Edit Program Studi</h3>
             </div>
-            <form class="form-horizontal" method="post" action="<?php echo site_url('ruangbelajar/addmapel/'.$id_mp);?>">
+            <form class="form-horizontal" method="post" action="<?php echo site_url('tugasakhir/addprodi/'.$KodeProdi);?>">
                 <div class="modal-body">
+
+                  <div class="form-group">
+                        <label class="control-label col-xs-3" >Kode Program Studi</label>
+                        <div class="col-xs-8">
+                            <input name="KodeProdi" value="<?php echo $KodeProdi;?>" class="form-control" type="text" placeholder="Masukkan Kode Program Studi">
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="control-label col-xs-3" >Kode Jurusan</label>
+                        <div class="col-xs-8">
+                            <input name="KodeJurusan" value="<?php echo $KodeJurusan;?>" class="form-control" type="text" placeholder="Masukkan Kode Jurusan">
+                        </div>
+                    </div>
  
                     <div class="form-group">
-                        <label class="control-label col-xs-3" >Nama Mata Pelajaran</label>
+                        <label class="control-label col-xs-3" >Nama Program Studi</label>
                         <div class="col-xs-8">
-                            <input name="namamapel" value="<?php echo $nama_mp;?>" class="form-control" type="text" placeholder="Masukkan mata pelajaran">
+                            <input name="NamaProdi" value="<?php echo $NamaProdi;?>" class="form-control" type="text" placeholder="Masukkan Program Studi">
                         </div>
                     </div>
                     <div class="form-group">
-                        <label class="control-label col-xs-3" >Jenjang</label>
+                        <label class="control-label col-xs-3" >No. Telepon</label>
                         <div class="col-xs-8">
-                            <input name="jenjang" value="<?php echo $id_jenjang;?>" class="form-control" type="text" placeholder="Masukkan  jenjang" required>
+                            <input name="NoTelp" value="<?php echo $NoTelp;?>" class="form-control" type="text" placeholder="Masukkan  No. Telepon" required>
                         </div>
                     </div>
  
@@ -148,7 +181,7 @@
         </div>
  
     <?php endforeach;?>
-    <!--END MODAL ADD BARANG-->
+    <!--END MODAL ADD PRODI-->
 
      
 

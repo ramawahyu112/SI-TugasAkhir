@@ -8,8 +8,9 @@ class tugasakhir extends CI_Controller {
 		parent::__construct();
 			$this->load->model('mahasiswa_model','',TRUE);
 			$this->load->model('jurusan_model','',TRUE);
-			$this->load->model('mahasiswa_model','',TRUE);
 			$this->load->model('dosen_model','',TRUE);
+			$this->load->model('prodi_model','',TRUE);
+
 	}
 
 	function index()
@@ -89,34 +90,36 @@ function addjurusan(){
 
 	// END jurusan FUNCTION
 
-// START MAPELFUNCTION
-	function mapel()
+// START prodiFUNCTION
+	function prodi()
 	{
 
-	$data['mapel'] = $this->mapel_model->get_mapel();
-	$this->load->view('mapel',$data);
+	$data['prodi'] = $this->prodi_model->get_prodi();
+	$this->load->view('prodi',$data);
 	}
 
-	function deletemapel(){
-    $id_mapel = $this->uri->segment(3);
-    $this->mapel_model->delete($id_mapel);
-    redirect('tugasakhir/mapel');
+	function deleteprodi(){
+    $KodeProdi = $this->uri->segment(3);
+    $this->prodi_model->delete($KodeProdi);
+    redirect('tugasakhir/prodi');
 }
 
-function addmapel(){
-	 $id_mapel = $this->uri->segment(3);
-	$mapel = array('nama_mp' => $this->input->post('namamapel'),
-		'KodeJurusan' => $this->input->post('jurusan'));
+function addprodi(){
+	 $KodeProdi = $this->uri->segment(3);
+	$prodi = array('KodeProdi' => $this->input->post('KodeProdi'),
+		'KodeJurusan' => $this->input->post('KodeJurusan'),
+	'NamaProdi' => $this->input->post('NamaProdi'),
+	'NoTelp' => $this->input->post('NoTelp'));
 
-	if($id_mapel!=0){
-		$this->mapel_model->update($id_mapel,$mapel);
+	if($KodeProdi!=0){
+		$this->prodi_model->update($KodeProdi,$prodi);
 
 	}else{
-	$KodeJurusan = $this->mapel_model->save($mapel);
+	$KodeProdi = $this->prodi_model->save($prodi);
 
 	}
 	
-    redirect('tugasakhir/mapel');
+    redirect('tugasakhir/prodi');
 }
 
 
