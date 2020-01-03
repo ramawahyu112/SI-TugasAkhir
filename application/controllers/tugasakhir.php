@@ -7,7 +7,7 @@ class tugasakhir extends CI_Controller {
 	{
 		parent::__construct();
 			$this->load->model('akun_model','',TRUE);
-			$this->load->model('jenjang_model','',TRUE);
+			$this->load->model('jurusan_model','',TRUE);
 			$this->load->model('mapel_model','',TRUE);
 			$this->load->model('materi_model','',TRUE);
 	}
@@ -39,7 +39,7 @@ function addakun(){
 							'nama_user' => $this->input->post('nama_user'),
 							'akses' => $this->input->post('hak_akses'),
 							'status' => $this->input->post('status'),
-							'id_jenjang' => $this->input->post('id_jenjang'));
+							'KodeJurusan' => $this->input->post('KodeJurusan'));
 	if($id_user!=0){
 		$this->akun_model->update($id_user,$akun);
 
@@ -54,72 +54,74 @@ function addakun(){
 
 	// END ACCOUNT FUNCTION
 
-// START JENJANG FUNCTION
-	function jenjang()
+// START jurusan FUNCTION
+	function jurusan()
 	{
 
-	$data['jenjang'] = $this->jenjang_model->get_jenjang();
-	$this->load->view('jenjang',$data);
+	$data['jurusan'] = $this->jurusan_model->get_jurusan();
+	$this->load->view('jurusan',$data);
 	}
 
-	function deletejenjang(){
-    $id_jenjang = $this->uri->segment(3);
-    $this->jenjang_model->delete($id_jenjang);
-    redirect('tugasakhir/jenjang');
+	function deletejurusan(){
+    $KodeJurusan = $this->uri->segment(3);
+    $this->jurusan_model->delete($KodeJurusan);
+    redirect('tugasakhir/jurusan');
 }
 
-function addjenjang(){
-	 $id_jenjang = $this->uri->segment(3);
-	$jenjang = array('nama_jj' => $this->input->post('nama_jenjang'),
-		'status' => $this->input->post('status_jenjang'));
+function addjurusan(){
+	 $KodeJurusan = $this->uri->segment(3);
+	$jurusan = array('KodeJurusan' => $this->input->post('KodeJurusan'),
+		'NamaJurusan' => $this->input->post('NamaJurusan'),
+		'NamaKaJurusan' => $this->input->post('NamaKaJurusan'),
+		'NoTelp' => $this->input->post('NoTelp'));
 
-	if($id_jenjang!=0){
-		$this->jenjang_model->update($id_jenjang,$jenjang);
+	if($KodeJurusan!=0){
+		$this->jurusan_model->update($KodeJurusan,$jurusan);
 
 	}else{
-	$id_jenjang = $this->jenjang_model->save($jenjang);
+	$KodeJurusan = $this->jurusan_model->save($jurusan);
 
 	}
 	
-    redirect('tugasakhir/jenjang');
+    redirect('tugasakhir/jurusan');
 }
 
 
-	// END JENJANG FUNCTION
+	// END jurusan FUNCTION
 
 
-// // START JENJANG FUNCTION
-// 	function jenjang()
+// // START jurusan FUNCTION
+// 	function jurusan()
 // 	{
 
-// 	$data['jenjang'] = $this->jenjang_model->get_jenjang();
-// 	$this->load->view('jenjang',$data);
+// 	$data['jurusan'] = $this->jurusan_model->get_jurusan();
+// 	$this->load->view('jurusan',$data);
 // 	}
 
-// 	function deletejenjang(){
-//     $id_jenjang = $this->uri->segment(3);
-//     $this->jenjang_model->delete($id_jenjang);
-//     redirect('tugasakhir/jenjang');
+// 	function deletejurusan(){
+//     $KodeJurusan = $this->uri->segment(3);
+//     $this->jurusan_model->delete($KodeJurusan);
+//     redirect('tugasakhir/jurusan');
 // }
 
-// function addjenjang(){
-// 	 $id_jenjang = $this->uri->segment(3);
-// 	$jenjang = array('nama_jj' => $this->input->post('nama_jenjang'),
-// 		'status' => $this->input->post('status_jenjang'));
+// function addjurusan(){
+// 	 $KodeJurusan = $this->uri->segment(3);
+// 	$jurusan = array('nama_jj' => $this->input->post('nama_jurusan'),
+// 		'status' => $this->input->post('status_jurusan'));
 
-// 	if($id_jenjang!=0){
-// 		$this->jenjang_model->update($id_jenjang,$jenjang);
+// 	if($KodeJurusan!=0){
+// 		$this->jurusan_model->update($KodeJurusan,$jurusan);
 
 // 	}else{
-// 	$id_jenjang = $this->jenjang_model->save($jenjang);
+// 	$KodeJurusan = $this->jurusan_model->save($jurusan);
 
 // 	}
 	
-//     redirect('tugasakhir/jenjang');
+//     redirect('tugasakhir/jurusan');
 // }
 
 
-// 	// END JENJANG FUNCTION
+// 	// END jurusan FUNCTION
 
 
 
@@ -140,13 +142,13 @@ function addjenjang(){
 function addmapel(){
 	 $id_mapel = $this->uri->segment(3);
 	$mapel = array('nama_mp' => $this->input->post('namamapel'),
-		'id_jenjang' => $this->input->post('jenjang'));
+		'KodeJurusan' => $this->input->post('jurusan'));
 
 	if($id_mapel!=0){
 		$this->mapel_model->update($id_mapel,$mapel);
 
 	}else{
-	$id_jenjang = $this->mapel_model->save($mapel);
+	$KodeJurusan = $this->mapel_model->save($mapel);
 
 	}
 	
@@ -154,7 +156,7 @@ function addmapel(){
 }
 
 
-	// END JENJANG FUNCTION
+	// END jurusan FUNCTION
 
 
 
@@ -184,7 +186,7 @@ function addmateri(){
 		$this->materi_model->update($id_materi,$materi);
 
 	}else{
-	$id_jenjang = $this->materi_model->save($materi);
+	$KodeJurusan = $this->materi_model->save($materi);
 
 	}
 	
@@ -192,7 +194,7 @@ function addmateri(){
 }
 
 
-	// END JENJANG FUNCTION
+	// END jurusan FUNCTION
 
 function login()
 	{

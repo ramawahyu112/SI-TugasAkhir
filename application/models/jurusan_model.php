@@ -1,14 +1,14 @@
 <?php
-class jenjang_model extends CI_Model {
+class jurusan_model extends CI_Model {
 	
-	private $primary_key= 'id_jenjang';
-	private $table_name= 'tb_jenjang';
+	private $primary_key= 'KodeJurusan';
+	private $table_name= 'jurusan';
 
 	function __construct(){
 		parent::__construct();
 	}
 
-	 function get_jenjang(){
+	 function get_jurusan(){
     $result = $this->db->get($this->table_name);
     return $result;
   }

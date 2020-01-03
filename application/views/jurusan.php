@@ -1,4 +1,4 @@
-\
+
 <?php 
   include "header.php"
 ?>
@@ -29,34 +29,34 @@
                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">x</button>
                 <h3 class="modal-title" id="myModalLabel">Add Data Jurusan</h3>
             </div>
-            <form class="form-horizontal" method="post" action="<?php echo site_url('ruangbelajar/addjenjang');?>">
+            <form class="form-horizontal" method="post" action="<?php echo site_url('tugasakhir/addjurusan');?>">
                 <div class="modal-body">
 
                   <div class="form-group">
                         <label class="control-label col-xs-3" >Kode Jurusan</label>
                         <div class="col-xs-8">
-                            <input name="nama_jenjang" class="form-control" type="text" placeholder="Masukkan nama jenjang" required>
+                            <input name="KodeJurusan" class="form-control" type="text" placeholder="Masukkan nama jenjang" required>
                         </div>
                     </div>
 
                     <div class="form-group">
                         <label class="control-label col-xs-3" >Nama Jurusan</label>
                         <div class="col-xs-8">
-                            <input name="nama_jenjang" class="form-control" type="text" placeholder="Masukkan nama jenjang" required>
+                            <input name="NamaJurusan" class="form-control" type="text" placeholder="Masukkan nama jenjang" required>
                         </div>
                     </div>
 
                     <div class="form-group">
                         <label class="control-label col-xs-3" >Nama Ketua Jurusan</label>
                         <div class="col-xs-8">
-                            <input name="status_jenjang" class="form-control" type="text" placeholder="Masukkan nama ketua jurusan" required>
+                            <input name="NamaKaJurusan" class="form-control" type="text" placeholder="Masukkan nama ketua jurusan" required>
                         </div>
                     </div>
 
                     <div class="form-group">
                         <label class="control-label col-xs-3" >Nomor Telepon</label>
                         <div class="col-xs-8">
-                            <input name="nama_jenjang" class="form-control" type="text" placeholder="Masukkan nomor telepon" required>
+                            <input name="NoTelp" class="form-control" type="text" placeholder="Masukkan nomor telepon" required>
                         </div>
                     </div>
 
@@ -136,41 +136,35 @@
                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">x</button>
                 <h3 class="modal-title" id="myModalLabel">Edit Jurusan</h3>
             </div>
-            <form class="form-horizontal" method="post" action="<?php echo site_url('ruangbelajar/addjenjang/'.$id_jenjang);?>">
+            <form class="form-horizontal" method="post" action="<?php echo site_url('tugasakhir/addjurusan/'.$KodeJurusan);?>">
                 <div class="modal-body">
  
-                    <div class="form-group">
-                        <label class="control-label col-xs-3" >Nama Jurusan</label>
-                        <div class="col-xs-8">
-                            <input name="nama_jenjang" value="<?php echo $nama_jj;?>" class="form-control" type="text" placeholder="Masukkan nama jenjang" required>
-                        </div>
-                    </div>
 
                   <div class="form-group">
                         <label class="control-label col-xs-3" >Kode Jurusan</label>
                         <div class="col-xs-8">
-                            <input name="nama_jenjang" class="form-control" value="<?php echo $KodeJurusan;?>" type="text" placeholder="Masukkan nama jenjang" required>
+                            <input name="KodeJurusan" class="form-control" value="<?php echo $KodeJurusan;?>" type="text" placeholder="Masukkan kode jurusan" required>
                         </div>
                     </div>
 
                     <div class="form-group">
                         <label class="control-label col-xs-3" >Nama Jurusan</label>
                         <div class="col-xs-8">
-                            <input name="nama_jenjang" class="form-control" value="<?php echo $NamaJurusan;?>" type="text" placeholder="Masukkan nama jenjang" required>
+                            <input name="NamaJurusan" class="form-control" value="<?php echo $NamaJurusan;?>" type="text" placeholder="Masukkan nama jurusan" required>
                         </div>
                     </div>
 
                     <div class="form-group">
                         <label class="control-label col-xs-3" >Nama Ketua Jurusan</label>
                         <div class="col-xs-8">
-                            <input name="status_jenjang" class="form-control" value="<?php echo $NamaKaJurusan;?>" type="text" placeholder="Masukkan nama ketua jurusan" required>
+                            <input name="NamaKaJurusan" class="form-control" value="<?php echo $NamaKaJurusan;?>" type="text" placeholder="Masukkan nama ketua jurusan" required>
                         </div>
                     </div>
 
                     <div class="form-group">
                         <label class="control-label col-xs-3" >Nomor Telepon</label>
                         <div class="col-xs-8">
-                            <input name="nama_jenjang" class="form-control" value="<?php echo $NoTelp;?>" type="text" placeholder="Masukkan nomor telepon" required>
+                            <input name="NoTelp" class="form-control" value="<?php echo $NoTelp;?>" type="text" placeholder="Masukkan nomor telepon" required>
                         </div>
                     </div>
 
