@@ -6,10 +6,10 @@ class tugasakhir extends CI_Controller {
 	function __construct()
 	{
 		parent::__construct();
-			$this->load->model('akun_model','',TRUE);
+			$this->load->model('mahasiswa_model','',TRUE);
 			$this->load->model('jurusan_model','',TRUE);
 			$this->load->model('mapel_model','',TRUE);
-			$this->load->model('materi_model','',TRUE);
+			$this->load->model('dosen_model','',TRUE);
 	}
 
 	function index()
@@ -18,37 +18,37 @@ class tugasakhir extends CI_Controller {
 	}
 
 	// START ACCOUNT FUNCTION
-	function akun()
+	function mahasiswa()
 	{
 
-	$data['akun'] = $this->akun_model->get_akun();
-	$this->load->view('akun',$data);
+	$data['mahasiswa'] = $this->mahasiswa_model->get_mahasiswa();
+	$this->load->view('mahasiswa',$data);
 	}
 
-	function deleteakun(){
+	function deletemahasiswa(){
     $id_user = $this->uri->segment(3);
-    $this->akun_model->delete($id_user);
-    redirect('tugasakhir/akun');
+    $this->mahasiswa_model->delete($id_user);
+    redirect('tugasakhir/mahasiswa');
 }
 
 
-function addakun(){
+function addmahasiswa(){
 	 $id_user = $this->uri->segment(3);
-	$akun = array('username' => $this->input->post('username'),
+	$mahasiswa = array('username' => $this->input->post('username'),
 							'password' => $this->input->post('password'),
 							'nama_user' => $this->input->post('nama_user'),
 							'akses' => $this->input->post('hak_akses'),
 							'status' => $this->input->post('status'),
 							'KodeJurusan' => $this->input->post('KodeJurusan'));
 	if($id_user!=0){
-		$this->akun_model->update($id_user,$akun);
+		$this->mahasiswa_model->update($id_user,$mahasiswa);
 
 	}else{
-	$id_user = $this->akun_model->save($akun);
+	$id_user = $this->mahasiswa_model->save($mahasiswa);
 
 	}
 	
-    redirect('tugasakhir/akun');
+    redirect('tugasakhir/mahasiswa');
 }
 
 
@@ -89,42 +89,6 @@ function addjurusan(){
 
 	// END jurusan FUNCTION
 
-
-// // START jurusan FUNCTION
-// 	function jurusan()
-// 	{
-
-// 	$data['jurusan'] = $this->jurusan_model->get_jurusan();
-// 	$this->load->view('jurusan',$data);
-// 	}
-
-// 	function deletejurusan(){
-//     $KodeJurusan = $this->uri->segment(3);
-//     $this->jurusan_model->delete($KodeJurusan);
-//     redirect('tugasakhir/jurusan');
-// }
-
-// function addjurusan(){
-// 	 $KodeJurusan = $this->uri->segment(3);
-// 	$jurusan = array('nama_jj' => $this->input->post('nama_jurusan'),
-// 		'status' => $this->input->post('status_jurusan'));
-
-// 	if($KodeJurusan!=0){
-// 		$this->jurusan_model->update($KodeJurusan,$jurusan);
-
-// 	}else{
-// 	$KodeJurusan = $this->jurusan_model->save($jurusan);
-
-// 	}
-	
-//     redirect('tugasakhir/jurusan');
-// }
-
-
-// 	// END jurusan FUNCTION
-
-
-
 // START MAPELFUNCTION
 	function mapel()
 	{
@@ -160,37 +124,42 @@ function addmapel(){
 
 
 
-// START materi FUNCTION
-	function materi()
+// START dosen FUNCTION
+	function dosen()
 	{
 
-	$data['materi'] = $this->materi_model->get_materi();
-	$this->load->view('materi',$data);
+	$data['dosen'] = $this->dosen_model->get_dosen();
+	$this->load->view('dosen',$data);
 	}
 
-	function deletemateri(){
-    $id_materi = $this->uri->segment(3);
-    $this->materi_model->delete($id_materi);
-    redirect('tugasakhir/materi');
+	function deletedosen(){
+    $NIP = $this->uri->segment(3);
+    $this->dosen_model->delete($NIP);
+    redirect('tugasakhir/dosen');
 }
 
-function addmateri(){
-	 $id_materi = $this->uri->segment(3);
-	$materi = array('id_mpd' => $this->input->post('pelajaran'),
-		'judul' => $this->input->post('judul'),
-		'detail' => $this->input->post('detail'),
-		'url_video' => $this->input->post('urlvideo'),
-		'url_teks' => $this->input->post('urlteks'));
+function adddosen(){
+	 $NIP = $this->uri->segment(3);
+	$dosen = array('NIP' => $this->input->post('NIP'),
+		'NIDN' => $this->input->post('NIDN'),
+		'NamaDosen' => $this->input->post('NamaDosen'),
+		'Alamat' => $this->input->post('Alamat'),
+		'NoTelp' => $this->input->post('NoTelp'),
+		'Golongan' => $this->input->post('Golongan'),
+		'Pangkat' => $this->input->post('Pangkat'),
+		'PendidikanTerakhir' => $this->input->post('PendidikanTerakhir'),
+		'Username' => $this->input->post('Username'),
+		'Password' => $this->input->post('Password'));
 
-	if($id_materi!=0){
-		$this->materi_model->update($id_materi,$materi);
+	if($NIP!=0){
+		$this->dosen_model->update($NIP,$dosen);
 
 	}else{
-	$KodeJurusan = $this->materi_model->save($materi);
+	$NIP = $this->dosen_model->save($dosen);
 
 	}
 	
-    redirect('tugasakhir/materi');
+    redirect('tugasakhir/dosen');
 }
 
 
