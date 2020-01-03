@@ -29,7 +29,7 @@
                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">x</button>
                 <h3 class="modal-title" id="myModalLabel">Add Program Studi</h3>
             </div>
-            <form class="form-horizontal" method="post" action="<?php echo site_url('ruangbelajar/addmapel');?>">
+            <form class="form-horizontal" method="post" action="<?php echo site_url('tugasakhir/addprodi');?>">
                 <div class="modal-body">
 
                   <div class="form-group">
@@ -101,7 +101,7 @@
                    <td>
                       <a href="#" class="btn btn-sm btn-info" data-toggle="modal" data-target="#modal_edit<?php echo $row->KodeProdi;?>"> Update </a>
                  
-                      <a href="<?php echo site_url('ruangbelajar/deletemapel/'.$row->KodeProdi);?>" class="btn btn-sm btn-danger">Delete</a>
+                      <a href="<?php echo site_url('tugasakhir/deleteprodi/'.$row->KodeProdi);?>" class="btn btn-sm btn-danger">Delete</a>
 
 
                         
@@ -138,7 +138,7 @@
                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">x</button>
                 <h3 class="modal-title" id="myModalLabel">Edit Program Studi</h3>
             </div>
-            <form class="form-horizontal" method="post" action="<?php echo site_url('ruangbelajar/addmapel/'.$KodeProdi);?>">
+            <form class="form-horizontal" method="post" action="<?php echo site_url('tugasakhir/addprodi/'.$KodeProdi);?>">
                 <div class="modal-body">
 
                   <div class="form-group">
