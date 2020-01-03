@@ -8,7 +8,7 @@ class tugasakhir extends CI_Controller {
 		parent::__construct();
 			$this->load->model('mahasiswa_model','',TRUE);
 			$this->load->model('jurusan_model','',TRUE);
-			$this->load->model('mapel_model','',TRUE);
+			$this->load->model('mahasiswa_model','',TRUE);
 			$this->load->model('dosen_model','',TRUE);
 	}
 
