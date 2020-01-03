@@ -1,5 +1,5 @@
 <?php
-class akun_model extends CI_Model {
+class mahasiswa_model extends CI_Model {
 	
 	private $primary_key= 'id_user';
 	private $table_name= 'tb_user';

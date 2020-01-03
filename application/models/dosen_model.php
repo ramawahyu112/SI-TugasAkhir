@@ -1,14 +1,14 @@
 <?php
-class mapel_model extends CI_Model {
+class dosen_model extends CI_Model {
 	
-	private $primary_key= 'id_mp';
-	private $table_name= 'tb_mapel';
+	private $primary_key= 'NIP';
+	private $table_name= 'dosen';
 
 	function __construct(){
 		parent::__construct();
 	}
 
-	 function get_mapel(){
+	 function get_dosen(){
     $result = $this->db->get($this->table_name);
     return $result;
   }
