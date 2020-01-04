@@ -9,7 +9,7 @@
   <meta name="description" content="">
   <meta name="author" content="">
 
-  <title>Sistem Informasi Tugas Akhirr</title>
+  <title>Sistem Informasi Tugas Akhir</title>
 
   <!-- Custom fonts for this template-->
   <link href="<?php echo base_url() ?>assets/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
@@ -126,10 +126,18 @@
 
       <!-- Nav Item - Tables -->
       <li class="nav-item">
-        <a class="nav-link" href="<?php echo site_url('tugasakhir/akun');?>">
+        <a class="nav-link" href="<?php echo site_url('tugasakhir/kajur');?>">
           <i class="fas fa-fw fa-table"></i>
-          <span>User</span></a>
+          <span>Ketua Jurusan</span></a>
       </li>
+
+       <!-- Nav Item - Tables -->
+      <li class="nav-item">
+        <a class="nav-link" href="<?php echo site_url('tugasakhir/kaprodi');?>">
+          <i class="fas fa-fw fa-table"></i>
+          <span>Ketua Program Studi</span></a>
+      </li>
+
 
       <!-- Divider -->
       <hr class="sidebar-divider d-none d-md-block">

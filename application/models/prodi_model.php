@@ -3,13 +3,18 @@ class prodi_model extends CI_Model {
 	
 	private $primary_key= 'KodeProdi';
 	private $table_name= 'prodi';
+	private $table_foreign= 'jurusan';
+
 
 	function __construct(){
 		parent::__construct();
 	}
 
 	 function get_prodi(){
-    $result = $this->db->get($this->table_name);
+	 	$this->db->select('*');
+	 	$this->db->from($this->table_name);
+	 	$this->db->join($this->table_foreign, 'prodi.KodeJurusan=jurusan.KodeJurusan');
+    	$result = $this->db->get();
     return $result;
   }
 
