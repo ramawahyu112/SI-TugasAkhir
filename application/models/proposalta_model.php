@@ -1,15 +1,21 @@
 <?php
-class mahasiswa_model extends CI_Model {
+class proposalta_model extends CI_Model {
 	
-	private $primary_key= 'id_user';
-	private $table_name= 'tb_user';
+	private $primary_key= 'NoProposal';
+	private $table_name= 'proposalta';
+
 
 	function __construct(){
 		parent::__construct();
 	}
 
-	 function get_akun(){
-    $result = $this->db->get($this->table_name);
+	 function get_proposalta(){
+	 	$this->db->select('ta.*,p.NamaDosen as Pembimbing1, ps.NamaDosen as Pembimbing2, m.NamaMahasiswa');
+	 	$this->db->from('proposalta ta');
+	 	$this->db->join('dosen p','ta.NIPPembimbing1=p.NIP');
+	 	$this->db->join('dosen ps','ta.NIPPembimbing2=ps.NIP');
+	 	$this->db->join('mahasiswa m','ta.NIM=m.NIM');
+    $result = $this->db->get();
     return $result;
   }
 
