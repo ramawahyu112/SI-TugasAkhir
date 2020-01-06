@@ -14,14 +14,14 @@
           <!-- DataTales Example -->
           <div class="card shadow mb-4">
             <div class="card-header py-3">
-              <h6 class="m-0 font-weight-bold text-primary">LIST DATA PROPOSAL TUGAS AKHIR</h6>
+              <h6 class="m-0 font-weight-bold text-primary">LIST DATA TUGAS AKHIR</h6>
              
             </div>
              <div class="card-header py-9">
                <a href="#" class="btn btn-sm btn-success" data-toggle="modal" data-target="#modal_add_new"> Add </a>
              </div>
 
-<!-- ============ MODAL ADD PROPOSAL =============== -->
+<!-- ============ MODAL ADD JURUSAN =============== -->
         <div class="modal fade" id="modal_add_new" tabindex="-1" role="dialog" aria-labelledby="largeModal" aria-hidden="true">
             <div class="modal-dialog">
             <div class="modal-content">
@@ -91,7 +91,7 @@
             </div>
             </div>
         </div>
-        <!--END MODAL ADD PROPOSAL-->
+        <!--END MODAL ADD JURUSAN-->
 
             <div class="card-body">
               <div class="table-responsive">
@@ -142,7 +142,7 @@
 
 
 
-       <!-- ============ MODAL EDIT PROPOSAL =============== -->
+       <!-- ============ MODAL EDIT JURUSAN =============== -->
     <?php
         foreach($proposalta->result_array() as $i):
             $NoProposal=$i['NoProposal'];
@@ -213,7 +213,7 @@
         </div>
  
     <?php endforeach;?>
-    <!--END MODAL ADD PROPOSAL-->
+    <!--END MODAL ADD JURUSAN-->
 
      
 
