@@ -29,7 +29,7 @@
                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">x</button>
                 <h3 class="modal-title" id="myModalLabel">Add Mahasiswa</h3>
             </div>
-            <form class="form-horizontal" method="post" action="<?php echo site_url('tugasakhir/addakun');?>">
+            <form class="form-horizontal" method="post" action="<?php echo site_url('tugasakhir/addmahasiswa');?>">
                 <div class="modal-body">
  
                     <div class="form-group">
@@ -126,7 +126,7 @@
                     <td>
                       <a href="#" class="btn btn-sm btn-info" data-toggle="modal" data-target="#modal_edit<?php echo $row->NIM;?>"> Update </a>
                  
-                      <a href="<?php echo site_url('tugasakhir/deleteakun/'.$row->NIM);?>" class="btn btn-sm btn-danger">Delete</a>
+                      <a href="<?php echo site_url('tugasakhir/deletemahasiswa/'.$row->NIM);?>" class="btn btn-sm btn-danger">Delete</a>
 
 
                         
@@ -166,7 +166,7 @@
                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">x</button>
                 <h3 class="modal-title" id="myModalLabel">Edit Mahasiswa</h3>
             </div>
-            <form class="form-horizontal" method="post" action="<?php echo site_url('tugasakhir/addakun/'.$NIM);?>">
+            <form class="form-horizontal" method="post" action="<?php echo site_url('tugasakhir/addmahasiswa/'.$NIM);?>">
                 <div class="modal-body">
  
                     <div class="form-group">
