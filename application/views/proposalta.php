@@ -27,7 +27,7 @@
             <div class="modal-content">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">x</button>
-                <h3 class="modal-title" id="myModalLabel">Add Data Proporsal Tugas Akhir</h3>
+                <h3 class="modal-title" id="myModalLabel">Add Data Proposal Tugas Akhir</h3>
             </div>
             <form class="form-horizontal" method="post" action="<?php echo site_url('tugasakhir/addproposalta');?>">
                 <div class="modal-body">
