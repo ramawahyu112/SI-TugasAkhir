@@ -72,6 +72,7 @@
         </div>
       </li>
 
+
       <!-- Nav Item - Utilities Collapse Menu -->
      <!--  <li class="nav-item">
         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUtilities" aria-expanded="true" aria-controls="collapseUtilities">
@@ -137,6 +138,24 @@
           <i class="fas fa-fw fa-table"></i>
           <span>Ketua Program Studi</span></a>
       </li>
+
+
+       <!-- Nav Item - Pages Collapse Menu -->
+      <li class="nav-item">
+        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTA" aria-expanded="true" aria-controls="collapseTwo">
+          <i class="fas fa-fw fa-cog"></i>
+          <span>Tugas AKhir</span>
+        </a>
+        <div id="collapseTA" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+          <div class="bg-white py-2 collapse-inner rounded">
+           <!--  <h6 class="collapse-header">Custom Components:</h6> -->
+            <a class="collapse-item" href="<?php echo site_url('tugasakhir/proposalta');?>">Proposal Tugas Akhir</a>
+            <a class="collapse-item" href="<?php echo site_url('tugasakhir/tugasakhir');?>">Tugas Akhir</a>
+          </div>
+        </div>
+      </li>
+
+
 
 
       <!-- Divider -->
