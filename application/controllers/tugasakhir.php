@@ -30,25 +30,26 @@ class tugasakhir extends CI_Controller {
 	}
 
 	function deletemahasiswa(){
-    $id_user = $this->uri->segment(3);
-    $this->mahasiswa_model->delete($id_user);
+    $NIM = $this->uri->segment(3);
+    $this->mahasiswa_model->delete($NIM);
     redirect('tugasakhir/mahasiswa');
 }
 
 
 function addmahasiswa(){
-	 $id_user = $this->uri->segment(3);
-	$mahasiswa = array('username' => $this->input->post('username'),
-							'password' => $this->input->post('password'),
-							'nama_user' => $this->input->post('nama_user'),
-							'akses' => $this->input->post('hak_akses'),
-							'status' => $this->input->post('status'),
-							'KodeJurusan' => $this->input->post('KodeJurusan'));
-	if($id_user!=0){
-		$this->mahasiswa_model->update($id_user,$mahasiswa);
+	 $NIM = $this->uri->segment(3);
+	$mahasiswa = array('Username' => $this->input->post('Username'),
+							'Password' => $this->input->post('Password'),
+							'NIM' => $this->input->post('NIM'),
+							'NamaMahasiswa' => $this->input->post('NamaMahasiswa'),
+							'Alamat' => $this->input->post('Alamat'),
+							'NoTelp' => $this->input->post('NoTelp'),
+							'KodeProdi' => $this->input->post('KodeProdi'));
+	if($NIM!=0){
+		$this->mahasiswa_model->update($NIM,$mahasiswa);
 
 	}else{
-	$id_user = $this->mahasiswa_model->save($mahasiswa);
+	$NIM = $this->mahasiswa_model->save($mahasiswa);
 
 	}
 	
