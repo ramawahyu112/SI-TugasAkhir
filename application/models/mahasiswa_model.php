@@ -1,14 +1,14 @@
 <?php
 class mahasiswa_model extends CI_Model {
 	
-	private $primary_key= 'id_user';
-	private $table_name= 'tb_user';
+	private $primary_key= 'NIM';
+	private $table_name= 'mahasiswa';
 
 	function __construct(){
 		parent::__construct();
 	}
 
-	 function get_akun(){
+	 function get_mahasiswa(){
     $result = $this->db->get($this->table_name);
     return $result;
   }

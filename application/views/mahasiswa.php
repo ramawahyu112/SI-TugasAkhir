@@ -14,62 +14,69 @@
           <!-- DataTales Example -->
           <div class="card shadow mb-4">
             <div class="card-header py-3">
-              <h6 class="m-0 font-weight-bold text-primary">TAMBAH DATA USER</h6>
+              <h6 class="m-0 font-weight-bold text-primary">TAMBAH DATA MAHASISWA</h6>
              
             </div>
              <div class="card-header py-9">
                <a href="#" class="btn btn-sm btn-success" data-toggle="modal" data-target="#modal_add_new"> Add </a>
              </div>
 
-<!-- ============ MODAL ADD BARANG =============== -->
+<!-- ============ MODAL ADD MAHASISWA =============== -->
         <div class="modal fade" id="modal_add_new" tabindex="-1" role="dialog" aria-labelledby="largeModal" aria-hidden="true">
             <div class="modal-dialog">
             <div class="modal-content">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">x</button>
-                <h3 class="modal-title" id="myModalLabel">Add User</h3>
+                <h3 class="modal-title" id="myModalLabel">Add Mahasiswa</h3>
             </div>
-            <form class="form-horizontal" method="post" action="<?php echo site_url('ruangbelajar/addakun');?>">
+            <form class="form-horizontal" method="post" action="<?php echo site_url('tugasakhir/addakun');?>">
                 <div class="modal-body">
  
                     <div class="form-group">
                         <label class="control-label col-xs-3" >Username</label>
                         <div class="col-xs-8">
-                            <input name="username" class="form-control" type="text" placeholder="Masukkan username" required>
+                            <input name="Username" class="form-control" type="text" placeholder="Masukkan Username Anda" required>
                         </div>
                     </div>
  
                     <div class="form-group">
                         <label class="control-label col-xs-3" >Password</label>
                         <div class="col-xs-8">
-                            <input name="password" class="form-control" type="text" placeholder="Masukkan password" required>
+                            <input name="Password" class="form-control" type="text" placeholder="Masukkan Password Anda" required>
                         </div>
                     </div>
  
                     <div class="form-group">
-                        <label class="control-label col-xs-3" >Nama User</label>
+                        <label class="control-label col-xs-3" >NIM</label>
                         <div class="col-xs-8">
-                            <input name="nama_user" class="form-control" type="text" placeholder="Masukkan nama user" required>
+                            <input name="NIM" class="form-control" type="text" placeholder="Masukkan NIM Anda" required>
                         </div>
                     </div>
 
                     <div class="form-group">
-                        <label class="control-label col-xs-3" >Akses</label>
+                        <label class="control-label col-xs-3" >Nama Mahasiswa</label>
                         <div class="col-xs-8">
-                            <input name="hak_akses" class="form-control" type="text" placeholder="Masukkan hak akses" required>
+                            <input name="NamaMahasiswa" class="form-control" type="text" placeholder="Masukkan Nama Anda" required>
                         </div>
                     </div>
                     <div class="form-group">
-                        <label class="control-label col-xs-3" >Status</label>
+                        <label class="control-label col-xs-3" >Alamat</label>
                         <div class="col-xs-8">
-                            <input name="status" class="form-control" type="text" placeholder="Masukkan status" required>
+                            <input name="Alamat" class="form-control" type="text" placeholder="Masukkan Alamat" required>
                         </div>
                     </div>
 
                     <div class="form-group">
-                        <label class="control-label col-xs-3" >Jenjang</label>
+                        <label class="control-label col-xs-3" >No. Telepon</label>
                         <div class="col-xs-8">
-                            <input name="id_jenjang" class="form-control" type="text" placeholder="Masukkan id jenjang" required>
+                            <input name="NoTelp" class="form-control" type="text" placeholder="Masukkan No. Telepon" required>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="control-label col-xs-3" >Kode Program Studi</label>
+                        <div class="col-xs-8">
+                            <input name="KodeProdi" class="form-control" type="text" placeholder="Masukkan Kode Program Studi" required>
                         </div>
                     </div>
  
@@ -83,7 +90,7 @@
             </div>
             </div>
         </div>
-        <!--END MODAL ADD BARANG-->
+        <!--END MODAL ADD MAHASISWA-->
 
             <div class="card-body">
               <div class="table-responsive">
@@ -93,10 +100,11 @@
                       <th>No</th>
                       <th>Username</th>
                       <th>Password</th>
-                      <th>Nama User</th>
-                      <th>Akses</th>
-                      <th>Status</th>
-                      <th>Jenjang</th>
+                      <th>NIM</th>
+                      <th>Nama Mahasiswa</th>
+                      <th>Alamat</th>
+                      <th>No. Telepon</th>
+                      <th>Kode Program Studi</th>
                        <th>Action</th>
                     </tr>
                   </thead>
@@ -104,20 +112,21 @@
                    
                     <?php
                      $count = 0;
-                      foreach ($akun->result() as $row) :
+                      foreach ($mahasiswa->result() as $row) :
                         $count++; ?>
                   <tr>
                     <td><?php echo $count?></td>
-                    <td><?php echo $row->username;?></td>
-                    <td><?php echo $row->password;?></td>
-                    <td><?php echo $row->nama_user;?></td>
-                    <td><?php echo $row->akses;?></td>
-                    <td><?php echo $row->status;?></td>
-                    <td><?php echo $row->id_jenjang;?></td>
+                    <td><?php echo $row->Username;?></td>
+                    <td><?php echo $row->Password;?></td>
+                    <td><?php echo $row->NIM;?></td>
+                    <td><?php echo $row->NamaMahasiswa;?></td>
+                    <td><?php echo $row->Alamat;?></td>
+                    <td><?php echo $row->NoTelp;?></td>
+                    <td><?php echo $row->KodeProdi;?></td>
                     <td>
-                      <a href="#" class="btn btn-sm btn-info" data-toggle="modal" data-target="#modal_edit<?php echo $row->id_user;?>"> Update </a>
+                      <a href="#" class="btn btn-sm btn-info" data-toggle="modal" data-target="#modal_edit<?php echo $row->NIM;?>"> Update </a>
                  
-                      <a href="<?php echo site_url('ruangbelajar/deleteakun/'.$row->id_user);?>" class="btn btn-sm btn-danger">Delete</a>
+                      <a href="<?php echo site_url('tugasakhir/deleteakun/'.$row->NIM);?>" class="btn btn-sm btn-danger">Delete</a>
 
 
                         
@@ -138,66 +147,73 @@
 
 
 
-       <!-- ============ MODAL EDIT BARANG =============== -->
+       <!-- ============ MODAL EDIT MAHASISWA =============== -->
     <?php
-        foreach($akun->result_array() as $i):
-            $id_user=$i['id_user'];
-            $username=$i['username'];
-            $password=$i['password'];
-            $nama_user=$i['nama_user'];
-            $akses=$i['akses'];
-            $status=$i['status'];
-            $id_jenjang=$i['id_jenjang'];
+        foreach($mahasiswa->result_array() as $i):
+            $NIM=$i['NIM'];
+            $Username=$i['Username'];
+            $Password=$i['Password'];
+            $NamaMahasiswa=$i['NamaMahasiswa'];
+            $Alamat=$i['Alamat'];
+            $NoTelp=$i['NoTelp'];
+            $KodeProdi=$i['KodeProdi'];
         ?>
-        <div class="modal fade" id="modal_edit<?php echo $id_user;?>" tabindex="-1" role="dialog" aria-labelledby="largeModal"
+        <div class="modal fade" id="modal_edit<?php echo $NIM;?>" tabindex="-1" role="dialog" aria-labelledby="largeModal"
          aria-hidden="true">
             <div class="modal-dialog">
             <div class="modal-content">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">x</button>
-                <h3 class="modal-title" id="myModalLabel">Edit User</h3>
+                <h3 class="modal-title" id="myModalLabel">Edit Mahasiswa</h3>
             </div>
-            <form class="form-horizontal" method="post" action="<?php echo site_url('ruangbelajar/addakun/'.$id_user);?>">
+            <form class="form-horizontal" method="post" action="<?php echo site_url('tugasakhir/addakun/'.$NIM);?>">
                 <div class="modal-body">
  
                     <div class="form-group">
                         <label class="control-label col-xs-3" >Username</label>
                         <div class="col-xs-8">
-                            <input name="username" value="<?php echo $username;?>" class="form-control" type="text" placeholder="Masukkan Username" readonly>
+                            <input name="Username" value="<?php echo $Username;?>" class="form-control" type="text" placeholder="Masukkan Username Anda" readonly>
                         </div>
                     </div>
  
                     <div class="form-group">
                         <label class="control-label col-xs-3" >Password</label>
                         <div class="col-xs-8">
-                            <input name="password" value="<?php echo $password;?>" class="form-control" type="text" placeholder="Masukkan password" required>
+                            <input name="Password" value="<?php echo $Password;?>" class="form-control" type="text" placeholder="Masukkan Password Anda" required>
                         </div>
                     </div>
  
                    <div class="form-group">
-                        <label class="control-label col-xs-3" >Nama User</label>
+                        <label class="control-label col-xs-3" >NIM</label>
                         <div class="col-xs-8">
-                            <input name="nama_user" value="<?php echo $nama_user;?>" class="form-control" type="text" placeholder="Masukkan nama user" required>
+                            <input name="NIM" value="<?php echo $NIM;?>" class="form-control" type="text" placeholder="Masukkan NIM Anda" required>
                         </div>
                     </div>
 
                     <div class="form-group">
-                        <label class="control-label col-xs-3" >Akses</label>
+                        <label class="control-label col-xs-3" >Nama Mahasiswa</label>
                         <div class="col-xs-8">
-                            <input name="hak_akses" value="<?php echo $akses;?>" class="form-control" type="text" placeholder="Masukkan hak akses" required>
+                            <input name="NamaMahasiswa" value="<?php echo $NamaMahasiswa;?>" class="form-control" type="text" placeholder="Masukkan Nama Anda" required>
                         </div>
                     </div>
                     <div class="form-group">
-                        <label class="control-label col-xs-3" >Status</label>
+                        <label class="control-label col-xs-3" >Alamat</label>
                         <div class="col-xs-8">
-                            <input name="status" value="<?php echo $status;?>" class="form-control" type="text" placeholder="Masukkan status" required>
+                            <input name="Alamat" value="<?php echo $Alamat;?>" class="form-control" type="text" placeholder="Masukkan Alamat" required>
                         </div>
                     </div>
 
                     <div class="form-group">
-                        <label class="control-label col-xs-3" >Jenjang</label>
+                        <label class="control-label col-xs-3" >No. Telepon</label>
                         <div class="col-xs-8">
-                            <input name="id_jenjang" value="<?php echo $id_jenjang;?>" class="form-control" type="text" placeholder="Masukkan id jenjang" required>
+                            <input name="NoTelp" value="<?php echo $NoTelp;?>" class="form-control" type="text" placeholder="Masukkan No. Telepon" required>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="control-label col-xs-3" >Kode Program Studi</label>
+                        <div class="col-xs-8">
+                            <input name="KodeProdi" value="<?php echo $KodeProdi;?>" class="form-control" type="text" placeholder="Masukkan Kode Program Studi" required>
                         </div>
                     </div>
  
@@ -214,7 +230,7 @@
         </div>
  
     <?php endforeach;?>
-    <!--END MODAL ADD BARANG-->
+    <!--END MODAL ADD MAHASISWA-->
 
      
 
