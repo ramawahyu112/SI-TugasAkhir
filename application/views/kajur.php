@@ -14,60 +14,55 @@
           <!-- DataTales Example -->
           <div class="card shadow mb-4">
             <div class="card-header py-3">
-              <h6 class="m-0 font-weight-bold text-primary">LIST DATA PROGRAM STUDI</h6>
+              <h6 class="m-0 font-weight-bold text-primary">LIST DATA KETUA JURUSAN</h6>
              
             </div>
              <div class="card-header py-9">
                <a href="#" class="btn btn-sm btn-success" data-toggle="modal" data-target="#modal_add_new"> Add </a>
              </div>
 
-<!-- ============ MODAL ADD PRODI =============== -->
+<!-- ============ MODAL ADD JURUSAN =============== -->
         <div class="modal fade" id="modal_add_new" tabindex="-1" role="dialog" aria-labelledby="largeModal" aria-hidden="true">
             <div class="modal-dialog">
             <div class="modal-content">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">x</button>
-                <h3 class="modal-title" id="myModalLabel">Add Program Studi</h3>
+                <h3 class="modal-title" id="myModalLabel">Add Data Jurusan</h3>
             </div>
-            <form class="form-horizontal" method="post" action="<?php echo site_url('tugasakhir/addprodi');?>">
+            <form class="form-horizontal" method="post" action="<?php echo site_url('tugasakhir/addkajur');?>">
                 <div class="modal-body">
 
                   <div class="form-group">
-                        <label class="control-label col-xs-3" >Kode Program Studi</label>
-                        <div class="col-xs-8">
-                            <input name="KodeProdi" class="form-control" type="text" placeholder="Masukkan Kode Program Studi" required>
-                        </div>
-                    </div>
-
-                    <div class="form-group">
                         <label class="control-label col-xs-3" >Jurusan</label>
                         <div class="col-xs-8">
-
-                          <select name="KodeJurusan" class="form-control">
+                            <select name="KodeJurusan" class="form-control">
                             <option value="0">-Pilih Jurusan-</option>
                             <?php foreach($jurusan->result() as $rowjurusan):?>
                                 <option value="<?php echo $rowjurusan->KodeJurusan;?>"><?php echo $rowjurusan->NamaJurusan;?></option>
                             <?php endforeach;?>
                         </select>
-                     
                         </div>
                     </div>
- 
+
                     <div class="form-group">
-                        <label class="control-label col-xs-3" >Nama Program Studi</label>
+                        <label class="control-label col-xs-3" >Ketua Jurusan</label>
                         <div class="col-xs-8">
-                            <input name="NamaProdi" class="form-control" type="text" placeholder="Masukkan Program Studi" required>
+                            <select name="NIP" class="form-control">
+                            <option value="0">-Pilih Ketua Jurusan-</option>
+                            <?php foreach($dosen->result() as $rowdosen):?>
+                                <option value="<?php echo $rowdosen->NIP;?>"><?php echo $rowdosen->NamaDosen;?></option>
+                            <?php endforeach;?>
+                        </select>
                         </div>
                     </div>
- 
+
                     <div class="form-group">
-                        <label class="control-label col-xs-3" >No. Telepon</label>
+                        <label class="control-label col-xs-3" >Periode</label>
                         <div class="col-xs-8">
-                            <input name="NoTelp" class="form-control" type="text" placeholder="Masukkan No. Telepon" required>
+                            <input name="Periode" class="form-control" type="text" placeholder="Masukkan Periode Jabatan" required>
                         </div>
                     </div>
  
-                   
                 </div>
  
                 <div class="modal-footer">
@@ -78,7 +73,7 @@
             </div>
             </div>
         </div>
-        <!--END MODAL ADD PRODI-->
+        <!--END MODAL ADD JURUSAN-->
 
             <div class="card-body">
               <div class="table-responsive">
@@ -86,10 +81,9 @@
                   <thead>
                     <tr>
                       <th>No</th>
-                      <th>Kode Program Studi</th>
                       <th>Jurusan</th>
-                      <th>Nama Program Studi</th>
-                      <th>No. Telepon</th>
+                      <th>Ketua Jurusan</th>
+                      <th>Periode</th>
                        <th>Action</th>
                     </tr>
                   </thead>
@@ -97,20 +91,17 @@
                    
                     <?php
                      $count = 0;
-                      foreach ($prodi->result() as $row) :
+                      foreach ($kajur->result() as $row) :
                         $count++; ?>
                   <tr>
-                    <td><?php echo $count;?></td>
-                    <td><?php echo $row->KodeProdi;?></td>
+                    <td><?php echo $count?></td>
                     <td><?php echo $row->NamaJurusan;?></td>
-                    <td><?php echo $row->NamaProdi;?></td>
-                    <td><?php echo $row->NoTelp;?></td>
-                   <td>
-                      <a href="#" class="btn btn-sm btn-info" data-toggle="modal" data-target="#modal_edit<?php echo $row->KodeProdi;?>"> Update </a>
+                    <td><?php echo $row->NamaDosen;?></td>
+                    <td><?php echo $row->Periode;?></td>
+                    <td>
+                      <a href="#" class="btn btn-sm btn-info" data-toggle="modal" data-target="#modal_edit<?php echo $row->KodeJurusan;?>"> Update </a>
                  
-                      <a href="<?php echo site_url('tugasakhir/deleteprodi/'.$row->KodeProdi);?>" class="btn btn-sm btn-danger">Delete</a>
-
-
+                      <a href="<?php echo site_url('tugasakhir/deletekajur/'.$row->KodeJurusan.'/'.$row->NIP);?>" class="btn btn-sm btn-danger">Delete</a>
                         
                       </td>
                   </tr>
@@ -129,58 +120,60 @@
 
 
 
-       <!-- ============ MODAL EDIT PRODI =============== -->
+       <!-- ============ MODAL EDIT JURUSAN =============== -->
     <?php
-        foreach($prodi->result_array() as $i):
-             $KodeProdi=$i['KodeProdi'];
-             $KodeJurusan=$i['KodeJurusan'];
-             $NamaProdi=$i['NamaProdi'];
-             $NoTelp=$i['NoTelp'];
-             ?>
-        <div class="modal fade" id="modal_edit<?php echo $KodeProdi;?>" tabindex="-1" role="dialog" aria-labelledby="largeModal"
+        foreach($kajur->result_array() as $i):
+            $KodeJurusan=$i['KodeJurusan'];
+            $NIP=$i['NIP'];
+            $Periode=$i['Periode'];
+        ?>
+        <div class="modal fade" id="modal_edit<?php echo $KodeJurusan;?>" tabindex="-1" role="dialog" aria-labelledby="largeModal"
          aria-hidden="true">
             <div class="modal-dialog">
             <div class="modal-content">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">x</button>
-                <h3 class="modal-title" id="myModalLabel">Edit Program Studi</h3>
+                <h4 class="modal-title" id="myModalLabel">Edit Jurusan</h4>
             </div>
-            <form class="form-horizontal" method="post" action="<?php echo site_url('tugasakhir/addprodi/'.$KodeProdi);?>">
+            <form class="form-horizontal" method="post" action="<?php echo site_url('tugasakhir/addkajur/'.$KodeJurusan.'/'.$row->NIP);?>">
                 <div class="modal-body">
+ 
 
                   <div class="form-group">
-                        <label class="control-label col-xs-3" >Kode Program Studi</label>
-                        <div class="col-xs-8">
-                            <input name="KodeProdi" value="<?php echo $KodeProdi;?>" class="form-control" type="text" placeholder="Masukkan Kode Program Studi">
-                        </div>
-                    </div>
-
-                    <div class="form-group">
                         <label class="control-label col-xs-3" >Jurusan</label>
                         <div class="col-xs-8">
-                             <select name="KodeJurusan" class="form-control">
+                            <select name="KodeJurusan" class="form-control">
                             <option value="0">-Pilih Jurusan-</option>
                             <?php foreach($jurusan->result() as $rowjurusan):?>
-                                <option value="<?php $jur=$rowjurusan->KodeJurusan; echo $jur; ?>" 
-                                  <?php if($KodeJurusan==$jur){ echo 'selected';} ?>
+                                <option value="<?php $jurusans=$rowjurusan->KodeJurusan; echo $jurusans; ?>"
+                                  <?php if($KodeJurusan==$jurusans){ echo 'selected';} ?>
                                   ><?php echo $rowjurusan->NamaJurusan;?></option>
                             <?php endforeach;?>
                         </select>
                         </div>
                     </div>
- 
-                    <div class="form-group">
-                        <label class="control-label col-xs-3" >Nama Program Studi</label>
+
+                      <div class="form-group">
+                        <label class="control-label col-xs-3" >Ketua Jurusan</label>
                         <div class="col-xs-8">
-                            <input name="NamaProdi" value="<?php echo $NamaProdi;?>" class="form-control" type="text" placeholder="Masukkan Program Studi">
+                            <select name="NIP" class="form-control">
+                            <option value="0">-Pilih Ketua Jurusan-</option>
+                            <?php foreach($dosen->result() as $rowdosen):?>
+                                <option value="<?php $dosens=$rowdosen->NIP; echo $dosens; ?>"
+                                  <?php if($NIP==$dosens){ echo 'selected';} ?>
+                                  ><?php echo $rowdosen->NamaDosen;?></option>
+                            <?php endforeach;?>
+                        </select>
                         </div>
                     </div>
+
                     <div class="form-group">
-                        <label class="control-label col-xs-3" >No. Telepon</label>
+                        <label class="control-label col-xs-3" >Periode</label>
                         <div class="col-xs-8">
-                            <input name="NoTelp" value="<?php echo $NoTelp;?>" class="form-control" type="text" placeholder="Masukkan  No. Telepon" required>
+                            <input name="Periode" class="form-control" value="<?php echo $Periode;?>" type="text" placeholder="Masukkan Periode Jabatan" required>
                         </div>
                     </div>
+
  
  
                 </div>
@@ -195,7 +188,7 @@
         </div>
  
     <?php endforeach;?>
-    <!--END MODAL ADD PRODI-->
+    <!--END MODAL ADD JURUSAN-->
 
      
 

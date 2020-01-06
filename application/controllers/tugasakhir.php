@@ -8,8 +8,12 @@ class tugasakhir extends CI_Controller {
 		parent::__construct();
 			$this->load->model('mahasiswa_model','',TRUE);
 			$this->load->model('jurusan_model','',TRUE);
-			$this->load->model('prodi_model','',TRUE);
 			$this->load->model('dosen_model','',TRUE);
+			$this->load->model('prodi_model','',TRUE);
+			$this->load->model('kajur_model','',TRUE);
+			$this->load->model('kaprodi_model','',TRUE);
+			
+
 	}
 
 	function index()
@@ -95,6 +99,7 @@ function addjurusan(){
 	{
 
 	$data['prodi'] = $this->prodi_model->get_prodi();
+	$data['jurusan']=$this->jurusan_model->get_jurusan();
 	$this->load->view('prodi',$data);
 	}
 
@@ -167,6 +172,82 @@ function adddosen(){
 
 
 	// END jurusan FUNCTION
+
+
+// START kajur FUNCTION
+	function kajur()
+	{
+	$data['jurusan']=$this->jurusan_model->get_jurusan();
+	$data['kajur'] = $this->kajur_model->get_kajur();
+	$data['dosen'] = $this->dosen_model->get_dosen();
+	$this->load->view('kajur',$data);
+	}
+
+	function deletekajur(){
+    $KodeJurusan = $this->uri->segment(3);
+    $NIP = $this->uri->segment(4);
+    $this->kajur_model->delete($KodeJurusan, $NIP);
+    redirect('tugasakhir/kajur');
+}
+
+function addkajur(){
+	 $KodeJurusan = $this->uri->segment(3);
+	  $NIP = $this->uri->segment(4);
+	$kajur = array('KodeJurusan' => $this->input->post('KodeJurusan'),
+		'NIP' => $this->input->post('NIP'),
+		'Periode' => $this->input->post('Periode'));
+
+	if($KodeJurusan!=0){
+		$this->kajur_model->update($KodeJurusan,$NIP,$kajur);
+
+	}else{
+	$KodeJurusan = $this->kajur_model->save($kajur);
+
+	}
+	
+    redirect('tugasakhir/kajur');
+}
+
+
+	// END kajur FUNCTION
+
+
+// START kaprodi FUNCTION
+	function kaprodi()
+	{
+	$data['prodi'] = $this->prodi_model->get_prodi();
+	$data['kaprodi'] = $this->kaprodi_model->get_kaprodi();
+	$data['dosen'] = $this->dosen_model->get_dosen();
+	$this->load->view('kaprodi',$data);
+	}
+
+	function deletekaprodi(){
+    $KodeProdi = $this->uri->segment(3);
+    $NIP = $this->uri->segment(4);
+    $this->kaprodi_model->delete($KodeProdi, $NIP);
+    redirect('tugasakhir/kaprodi');
+}
+
+function addkaprodi(){
+	 $KodeProdi = $this->uri->segment(3);
+	  $NIP = $this->uri->segment(4);
+	$kaprodi = array('KodeProdi' => $this->input->post('KodeProdi'),
+		'NIP' => $this->input->post('NIP'),
+		'Periode' => $this->input->post('Periode'));
+
+	if($KodeProdi!=0){
+		$this->kaprodi_model->update($KodeProdi,$NIP,$kaprodi);
+
+	}else{
+	$KodeProdi = $this->kaprodi_model->save($kaprodi);
+
+	}
+	
+    redirect('tugasakhir/kaprodi');
+}
+
+
+	// END kaprodi FUNCTION
 
 function login()
 	{
