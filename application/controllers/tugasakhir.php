@@ -249,6 +249,44 @@ function addkaprodi(){
 
 	// END kaprodi FUNCTION
 
+
+// START proposalta FUNCTION
+	function proposalta()
+	{
+	$data['mahasiswa'] = $this->mahasiswa_model->get_mahasiswa();
+	$data['proposalta'] = $this->proposalta_model->get_proposalta();
+	$data['dosen'] = $this->dosen_model->get_dosen();
+	$this->load->view('proposalta',$data);
+	}
+
+	function deleteproposalta(){
+    $NoProposal = $this->uri->segment(3);
+    $this->proposalta_model->delete($NoProposal);
+    redirect('tugasakhir/proposalta');
+}
+
+function addproposalta(){
+	 $NoProposal = $this->uri->segment(3);
+	$proposalta = array('JudulProposal' => $this->input->post('JudulProposal'),
+		'TahunProposal' => $this->input->post('TahunProposal'),
+		'NIM' => $this->input->post('NIM'),
+		'NIPPembimbing1' => $this->input->post('NIPPembimbing1'),
+		'NIPPembimbing2' => $this->input->post('NIPPembimbing2'));
+
+	if($NoProposal!=0){
+		$this->proposalta_model->update($NoProposal,$proposalta);
+
+	}else{
+	$NoProposal = $this->proposalta_model->save($proposalta);
+
+	}
+	
+    redirect('tugasakhir/proposalta');
+}
+
+
+	// END proposalta FUNCTION
+
 function login()
 	{
 		$this->load->view('login');
