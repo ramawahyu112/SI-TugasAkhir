@@ -21,27 +21,27 @@
                <a href="#" class="btn btn-sm btn-success" data-toggle="modal" data-target="#modal_add_new"> Add </a>
              </div>
 
-<!-- ============ MODAL ADD JURUSAN =============== -->
+<!-- ============ MODAL ADD TA =============== -->
         <div class="modal fade" id="modal_add_new" tabindex="-1" role="dialog" aria-labelledby="largeModal" aria-hidden="true">
             <div class="modal-dialog">
             <div class="modal-content">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">x</button>
-                <h3 class="modal-title" id="myModalLabel">Add Data Proposal Tugas Akhir</h3>
+                <h3 class="modal-title" id="myModalLabel">Add Data Tugas Akhir</h3>
             </div>
-            <form class="form-horizontal" method="post" action="<?php echo site_url('tugasakhir/addproposalta');?>">
+            <form class="form-horizontal" method="post" action="<?php echo site_url('tugasakhir/addtugasakhir');?>">
                 <div class="modal-body">
 
                   <div class="form-group">
-                        <label class="control-label col-xs-3" >Judul Proposal</label>
+                        <label class="control-label col-xs-3" >Judul Tugas Akhir</label>
                         <div class="col-xs-8">
-                            <input name="JudulProposal" class="form-control" type="text" placeholder="Masukkan Judul Proposal" required>
+                            <input name="JudulTA" class="form-control" type="text" placeholder="Masukkan Judul Tugas Akhir" required>
                         </div>
                     </div>
                       <div class="form-group">
-                        <label class="control-label col-xs-3" >Tahun Proposal</label>
+                        <label class="control-label col-xs-3" >Tahun Tugas Akhir</label>
                         <div class="col-xs-8">
-                            <input name="TahunProposal" class="form-control" type="text" placeholder="Masukkan Tahun Proposal" required>
+                            <input name="TahunTA" class="form-control" type="text" placeholder="Masukkan Tahun Tugas Akhir" required>
                         </div>
                     </div>
 
@@ -56,6 +56,15 @@
                         </select>
                         </div>
                     </div>
+
+                     </div>
+                      <div class="form-group">
+                        <label class="control-label col-xs-3" >Tanggal Disetujui</label>
+                        <div class="col-xs-8">
+                            <input name="TglDisetujui" class="form-control" type="date" placeholder="Masukkan Tanggal Disetujui" required>
+                        </div>
+                    </div>
+
 
                     <div class="form-group">
                         <label class="control-label col-xs-3" >Pembimbing 1</label>
@@ -91,7 +100,7 @@
             </div>
             </div>
         </div>
-        <!--END MODAL ADD JURUSAN-->
+        <!--END MODAL ADD TA-->
 
             <div class="card-body">
               <div class="table-responsive">
@@ -99,11 +108,16 @@
                   <thead>
                     <tr>
                       <th>No</th>
-                      <th>Judul Proposal</th>
-                      <th>Tahun Proposal</th>
+                      <th>No Proposal</th>
+                      <th>Judul Tugas Akhir</th>
+                      <th>Tahun Tugas Akhir</th>
                       <th>Nama Mahasiswa</th>
+                      <th>Tanggal Disetujui</th>
                       <th>Pembimbing 1</th>
                       <th>Pembimbing 2</th>
+                      <th>Folder Softcopy Laporan</th>
+                      <th>Folder Softcopy Source</th>
+                      <th>Status</th>
                        <th>Action</th>
                     </tr>
                   </thead>
@@ -111,19 +125,24 @@
                    
                     <?php
                      $count = 0;
-                      foreach ($proposalta->result() as $row) :
+                      foreach ($tugasakhir->result() as $row) :
                         $count++; ?>
                   <tr>
                     <td><?php echo $count?></td>
-                    <td><?php echo $row->JudulProposal;?></td>
-                    <td><?php echo $row->TahunProposal;?></td>
-                    <td><?php echo $row->NamaMahasiswa;?></td>
-                     <td><?php echo $row->Pembimbing1;?></td>
-                      <td><?php echo $row->Pembimbing2;?></td>
+                    <td><?php echo $row->NoProposal;?></td>
+                    <td><?php echo $row->JudulTA;?></td>
+                    <td><?php echo $row->TahunTA;?></td>
+                    <td><?php echo $row->NIM;?></td>
+                    <td><?php echo $row->TglDisetujui;?></td>
+                    <td><?php echo $row->NIPPembimbing1;?></td>
+                    <td><?php echo $row->NIPPembimbing2;?></td>
+                    <td><?php echo $row->FolderSoftCopyLaporan;?></td>
+                    <td><?php echo $row->FolderSoftCopySource;?></td>
+                    <td><?php echo $row->Status;?></td>
                     <td>
-                      <a href="#" class="btn btn-sm btn-info" data-toggle="modal" data-target="#modal_edit<?php echo $row->NoProposal;?>"> Update </a>
+                      <a href="#" class="btn btn-sm btn-info" data-toggle="modal" data-target="#modal_edit<?php echo $row->NoTA;?>"> Update </a>
                  
-                      <a href="<?php echo site_url('tugasakhir/deletekaprodi/'.$row->NoProposal);?>" class="btn btn-sm btn-danger">Delete</a>
+                      <a href="<?php echo site_url('tugasakhir/deletekaprodi/'.$row->NoTA);?>" class="btn btn-sm btn-danger">Delete</a>
                         
                       </td>
                   </tr>
@@ -142,17 +161,22 @@
 
 
 
-       <!-- ============ MODAL EDIT JURUSAN =============== -->
+       <!-- ============ MODAL EDIT TA =============== -->
     <?php
-        foreach($proposalta->result_array() as $i):
+        foreach($tugasakhir->result_array() as $i):
+            $NoTA=$i['NoTA'];
             $NoProposal=$i['NoProposal'];
-            $JudulProposal=$i['JudulProposal'];
-            $TahunProposal=$i['TahunProposal'];
-            $NamaMahasiswa=$i['NamaMahasiswa'];
-            $Pembimbing1=$i['Pembimbing1'];
-            $Pembimbing2=$i['Pembimbing2'];
+            $JudulTA=$i['JudulTA'];
+            $TahunTA=$i['TahunTA'];
+            $NIM=$i['NIM'];
+            $TglDisetujui=$i['TglDisetujui'];
+            $NIPPembimbing1=$i['NIPPembimbing1'];
+            $NIPPembimbing2=$i['NIPPembimbing2'];
+            $FolderSoftCopyLaporan=$i['FolderSoftCopyLaporan'];
+            $FolderSoftCopySource=$i['FolderSoftCopySource'];
+            $Status=$i['Status'];
         ?>
-        <div class="modal fade" id="modal_edit<?php echo $NoProposal;?>" tabindex="-1" role="dialog" aria-labelledby="largeModal"
+        <div class="modal fade" id="modal_edit<?php echo $NoTA;?>" tabindex="-1" role="dialog" aria-labelledby="largeModal"
          aria-hidden="true">
             <div class="modal-dialog">
             <div class="modal-content">
