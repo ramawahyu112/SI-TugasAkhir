@@ -21,7 +21,7 @@
                <a href="#" class="btn btn-sm btn-success" data-toggle="modal" data-target="#modal_add_new"> Add </a>
              </div>
 
-<!-- ============ MODAL ADD BARANG =============== -->
+<!-- ============ MODAL ADD DOSEN =============== -->
         <div class="modal fade" id="modal_add_new" tabindex="-1" role="dialog" aria-labelledby="largeModal" aria-hidden="true">
             <div class="modal-dialog">
             <div class="modal-content">
@@ -49,55 +49,55 @@
                     <div class="form-group">
                         <label class="control-label col-xs-3" >Nama Dosen</label>
                         <div class="col-xs-8">
-                            <input name="NamaDosen" class="form-control" type="text" placeholder="Masukkan nama dosen" required>
+                            <input name="NamaDosen" class="form-control" type="text" placeholder="Masukkan Nama Dosen" required>
                         </div>
                     </div>
 
                     <div class="form-group">
                         <label class="control-label col-xs-3" >Alamat</label>
                         <div class="col-xs-8">
-                            <input name="Alamat" class="form-control" type="text" placeholder="Masukkan alamat" required>
+                            <input name="Alamat" class="form-control" type="text" placeholder="Masukkan Alamat" required>
                         </div>
                     </div>
                     <div class="form-group">
                         <label class="control-label col-xs-3" >Nomor Telepon</label>
                         <div class="col-xs-8">
-                            <input name="NoTelp" class="form-control" type="text" placeholder="Masukkan nomor telepon " required>
+                            <input name="NoTelp" class="form-control" type="text" placeholder="Masukkan Nomor Telepon " required>
                         </div>
                     </div>
 
                     <div class="form-group">
                         <label class="control-label col-xs-3" >Golongan</label>
                         <div class="col-xs-8">
-                            <input name="Golongan" class="form-control" type="text" placeholder="Masukkan golongan" required>
+                            <input name="Golongan" class="form-control" type="text" placeholder="Masukkan Golongan" required>
                         </div>
                     </div>
 
                     <div class="form-group">
                         <label class="control-label col-xs-3" >Pangkat</label>
                         <div class="col-xs-8">
-                            <input name="Pangkat" class="form-control" type="text" placeholder="Masukkan pangkat" required>
+                            <input name="Pangkat" class="form-control" type="text" placeholder="Masukkan Pangkat" required>
                         </div>
                     </div>
 
                     <div class="form-group">
                         <label class="control-label col-xs-3" >Pendidikan Terakhir</label>
                         <div class="col-xs-8">
-                            <input name="PendidikanTerakhir" class="form-control" type="text" placeholder="Masukkan pendidikan terakhir" required>
+                            <input name="PendidikanTerakhir" class="form-control" type="text" placeholder="Masukkan Pendidikan Terakhir" required>
                         </div>
                     </div>
 
                     <div class="form-group">
                         <label class="control-label col-xs-3" >Username</label>
                         <div class="col-xs-8">
-                            <input name="Username" class="form-control" type="text" placeholder="Masukkan username" required>
+                            <input name="Username" class="form-control" type="text" placeholder="Masukkan Username" required>
                         </div>
                     </div>
 
                     <div class="form-group">
                         <label class="control-label col-xs-3" >Password</label>
                         <div class="col-xs-8">
-                            <input name="Password" class="form-control" type="text" placeholder="Masukkan password" required>
+                            <input name="Password" class="form-control" type="text" placeholder="Masukkan Password" required>
                         </div>
                     </div>
  
@@ -174,7 +174,7 @@
 
 
 
-       <!-- ============ MODAL EDIT BARANG =============== -->
+       <!-- ============ MODAL EDIT DOSEN =============== -->
     <?php
         foreach($dosen->result_array() as $i):
             $NIP=$i['NIP'];
@@ -216,55 +216,55 @@
                     <div class="form-group">
                         <label class="control-label col-xs-3" >Nama Dosen</label>
                         <div class="col-xs-8">
-                            <input name="NamaDosen" value="<?php echo $NamaDosen;?>" class="form-control" type="text" placeholder="Masukkan nama dosen" required>
+                            <input name="NamaDosen" value="<?php echo $NamaDosen;?>" class="form-control" type="text" placeholder="Masukkan Nama Dosen" required>
                         </div>
                     </div>
 
                     <div class="form-group">
                         <label class="control-label col-xs-3" >Alamat</label>
                         <div class="col-xs-8">
-                            <input name="Alamat" value="<?php echo $Alamat;?>" class="form-control" type="text" placeholder="Masukkan alamat" required>
+                            <input name="Alamat" value="<?php echo $Alamat;?>" class="form-control" type="text" placeholder="Masukkan Alamat" required>
                         </div>
                     </div>
                     <div class="form-group">
                         <label class="control-label col-xs-3" >Nomor Telepon</label>
                         <div class="col-xs-8">
-                            <input name="NoTelp" value="<?php echo $NoTelp;?>" class="form-control" type="text" placeholder="Masukkan nomor telepon " required>
+                            <input name="NoTelp" value="<?php echo $NoTelp;?>" class="form-control" type="text" placeholder="Masukkan Nomor Telepon " required>
                         </div>
                     </div>
 
                     <div class="form-group">
                         <label class="control-label col-xs-3" >Golongan</label>
                         <div class="col-xs-8">
-                            <input name="Golongan" value="<?php echo $Golongan;?>" class="form-control" type="text" placeholder="Masukkan golongan" required>
+                            <input name="Golongan" value="<?php echo $Golongan;?>" class="form-control" type="text" placeholder="Masukkan Golongan" required>
                         </div>
                     </div>
 
                     <div class="form-group">
                         <label class="control-label col-xs-3" >Pangkat</label>
                         <div class="col-xs-8">
-                            <input name="Pangkat" value="<?php echo $Pangkat;?>" class="form-control" type="text" placeholder="Masukkan pangkat" required>
+                            <input name="Pangkat" value="<?php echo $Pangkat;?>" class="form-control" type="text" placeholder="Masukkan Pangkat" required>
                         </div>
                     </div>
 
                     <div class="form-group">
                         <label class="control-label col-xs-3" >Pendidikan Terakhir</label>
                         <div class="col-xs-8">
-                            <input name="PendidikanTerakhir" value="<?php echo $PendidikanTerakhir;?>" class="form-control" type="text" placeholder="Masukkan pendidikan terakhir" required>
+                            <input name="PendidikanTerakhir" value="<?php echo $PendidikanTerakhir;?>" class="form-control" type="text" placeholder="Masukkan Pendidikan Terakhir" required>
                         </div>
                     </div>
 
                     <div class="form-group">
                         <label class="control-label col-xs-3" >Username</label>
                         <div class="col-xs-8">
-                            <input name="Username" value="<?php echo $Username;?>" class="form-control" type="text" placeholder="Masukkan username" required>
+                            <input name="Username" value="<?php echo $Username;?>" class="form-control" type="text" placeholder="Masukkan Username" required>
                         </div>
                     </div>
 
                     <div class="form-group">
                         <label class="control-label col-xs-3" >Password</label>
                         <div class="col-xs-8">
-                            <input name="Password" value="<?php echo $Password;?>" class="form-control" type="text" placeholder="Masukkan password" required>
+                            <input name="Password" value="<?php echo $Password;?>" class="form-control" type="text" placeholder="Masukkan Password" required>
                         </div>
                     </div>
  
@@ -280,7 +280,7 @@
         </div>
  
     <?php endforeach;?>
-    <!--END MODAL ADD BARANG-->
+    <!--END MODAL ADD DOSEN-->
 
      
 
