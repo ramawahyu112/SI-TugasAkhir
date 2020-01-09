@@ -18,7 +18,7 @@
              
             </div>
              <div class="card-header py-9">
-               <a href="#" class="btn btn-sm btn-success" data-toggle="modal" data-target="#modal_add_new"> Add </a>
+               <a href="#" class="btn btn-sm btn-success" data-toggle="modal" data-target="#modal_add_new"><i class="fas fa-plus">Add</i> </a>
              </div>
 
 <!-- ============ MODAL ADD PRODI =============== -->
@@ -106,9 +106,9 @@
                     <td><?php echo $row->NamaProdi;?></td>
                     <td><?php echo $row->NoTelp;?></td>
                    <td>
-                      <a href="#" class="btn btn-sm btn-info" data-toggle="modal" data-target="#modal_edit<?php echo $row->KodeProdi;?>"> Update </a>
+                      <a href="#" class="btn btn-sm  btn-info" data-toggle="modal" data-target="#modal_edit<?php echo $row->KodeProdi;?>"> <i class="fas fa-edit"></i> </a>
                  
-                      <a href="<?php echo site_url('tugasakhir/deleteprodi/'.$row->KodeProdi);?>" class="btn btn-sm btn-danger">Delete</a>
+                      <a href="#" data-toggle="modal" data-target="#modal_hapus<?php echo $row->KodeProdi;?>" class="btn btn-sm  btn-danger"><i class="fas fa-trash"></i></a>
 
 
                         
@@ -195,7 +195,37 @@
         </div>
  
     <?php endforeach;?>
-    <!--END MODAL ADD PRODI-->
+    <!--END MODAL EDIT PRODI-->
+
+ <?php
+        foreach($prodi->result_array() as $i):
+             $KodeProdi=$i['KodeProdi'];
+             $NamaProdi=$i['NamaProdi'];
+             ?>
+     <!-- ============ MODAL HAPUS PRODI =============== -->
+        <div class="modal fade" id="modal_hapus<?php echo $KodeProdi;?>" tabindex="-1" role="dialog" aria-labelledby="largeModal" aria-hidden="true">
+            <div class="modal-dialog">
+            <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="fas fa-trash"> Delete !</h5 >
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">x</button>
+
+            </div>
+            <form class="form-horizontal" method="post" action="<?php echo site_url('tugasakhir/deleteprodi/'.$KodeProdi);?>">
+                <div class="modal-body">
+                    <p>Menghapus data dapat mempengaruhi program lainnya !!</p>
+                    <p>Hapus data Program Studi <b><?php echo $NamaProdi;?> ?</b></p>
+                </div>
+                <div class="modal-footer">
+                    <button class="btn btn-sm btn-success " data-dismiss="modal" aria-hidden="true">Batal</button>
+                    <button class="btn btn-sm btn-danger">Hapus</button>
+                </div>
+            </form>
+            </div>
+            </div>
+        </div>
+    <?php endforeach;?>
+    <!--END MODAL HAPUS PRODI-->
 
      
 

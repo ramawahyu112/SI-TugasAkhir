@@ -18,7 +18,7 @@
              
             </div>
              <div class="card-header py-9">
-               <a href="#" class="btn btn-sm btn-success" data-toggle="modal" data-target="#modal_add_new"> Add </a>
+               <a href="#" class="btn btn-sm btn-success" data-toggle="modal" data-target="#modal_add_new"> <i class="fas fa-plus">Add </i></a>
              </div>
 
 <!-- ============ MODAL ADD DOSEN =============== -->
@@ -151,9 +151,9 @@
                     <td><?php echo $row->Username;?></td>
                     <td><?php echo $row->Password;?></td>
                     <td>
-                      <a href="#" class="btn btn-sm btn-info" data-toggle="modal" data-target="#modal_edit<?php echo $row->NIP;?>"> Update </a>
+                      <a href="#" class="btn btn-sm   btn-info" data-toggle="modal" data-target="#modal_edit<?php echo $row->NIP;?>"> <i class="fas fa-edit"> </i></a>
                  
-                      <a href="<?php echo site_url('tugasakhir/deletedosen/'.$row->NIP);?>" class="btn btn-sm btn-danger">Delete</a>
+                      <a href="<?php echo site_url('tugasakhir/deletedosen/'.$row->NIP);?>" class="btn btn-sm  btn-danger"><i class="fas fa-trash"></i></a>
 
 
                         

@@ -18,7 +18,7 @@
              
             </div>
              <div class="card-header py-9">
-               <a href="#" class="btn btn-sm btn-success" data-toggle="modal" data-target="#modal_add_new"> Add </a>
+               <a href="#" class="btn btn-sm btn-success" data-toggle="modal" data-target="#modal_add_new"><i class="fas fa-plus"> Add</i> </a>
              </div>
 
 <!-- ============ MODAL ADD MAHASISWA =============== -->
@@ -124,9 +124,9 @@
                     <td><?php echo $row->NoTelp;?></td>
                     <td><?php echo $row->KodeProdi;?></td>
                     <td>
-                      <a href="#" class="btn btn-sm btn-info" data-toggle="modal" data-target="#modal_edit<?php echo $row->NIM;?>"> Update </a>
+                      <a href="#" class="btn btn-sm  btn-info" data-toggle="modal" data-target="#modal_edit<?php echo $row->NIM;?>"> <i class="fas fa-edit"></i> </a>
                  
-                      <a href="<?php echo site_url('tugasakhir/deletemahasiswa/'.$row->NIM);?>" class="btn btn-sm btn-danger">Delete</a>
+                      <a href="#" class="btn btn-sm  btn-danger" data-toggle="modal" data-target="#modal_hapus<?php echo $row->NIM;?>"><i class="fas fa-trash"></i></a>
 
 
                         
@@ -231,6 +231,37 @@
  
     <?php endforeach;?>
     <!--END MODAL ADD MAHASISWA-->
+
+
+     <?php
+        foreach($mahasiswa->result_array() as $i):
+            $NIM=$i['NIM'];
+            $NamaMahasiswa=$i['NamaMahasiswa'];
+        ?>
+     <!-- ============ MODAL HAPUS MAHASISWA =============== -->
+        <div class="modal fade" id="modal_hapus<?php echo $NIM;?>" tabindex="-1" role="dialog" aria-labelledby="largeModal" aria-hidden="true">
+            <div class="modal-dialog">
+            <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="fas fa-trash"> Delete !</h5 >
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">x</button>
+
+            </div>
+            <form class="form-horizontal" method="post" action="<?php echo site_url('tugasakhir/deletemahasiswa/'.$NIM);?>">
+                <div class="modal-body">
+                    <p>Menghapus data dapat mempengaruhi program lainnya !!</p>
+                    <p>Hapus data Mahasiswa <b><?php echo $NamaMahasiswa;?> ?</b></p>
+                </div>
+                <div class="modal-footer">
+                    <button class="btn btn-sm btn-success " data-dismiss="modal" aria-hidden="true">Batal</button>
+                    <button class="btn btn-sm btn-danger">Hapus</button>
+                </div>
+            </form>
+            </div>
+            </div>
+        </div>
+    <?php endforeach;?>
+    <!--END MODAL HAPUS MAHASISWA-->
 
      
 

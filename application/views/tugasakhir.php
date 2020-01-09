@@ -18,7 +18,7 @@
              
             </div>
              <div class="card-header py-9">
-               <a href="#" class="btn btn-sm btn-success" data-toggle="modal" data-target="#modal_add_new"> Add </a>
+               <a href="#" class="btn btn-sm btn-success" data-toggle="modal" data-target="#modal_add_new"> <i class="fas fa-plus">Add</i> </a>
              </div>
 
 <!-- ============ MODAL ADD TA =============== -->
@@ -140,9 +140,9 @@
                     <td><?php echo $row->FolderSoftCopySource;?></td>
                     <td><?php echo $row->Status;?></td>
                     <td>
-                      <a href="#" class="btn btn-sm btn-info" data-toggle="modal" data-target="#modal_edit<?php echo $row->NoTA;?>"> Update </a>
+                      <a href="#" class="btn btn-sm  btn-info" data-toggle="modal" data-target="#modal_edit<?php echo $row->NoTA;?>"> <i class="fas fa-edit"></i> </a>
                  
-                      <a href="<?php echo site_url('tugasakhir/deletekaprodi/'.$row->NoTA);?>" class="btn btn-sm btn-danger">Delete</a>
+                      <a href="<?php echo site_url('tugasakhir/deletekaprodi/'.$row->NoTA);?>" class="btn btn-sm  btn-danger"><i class="fas fa-trash"></i></a>
                         
                       </td>
                   </tr>
