@@ -18,19 +18,31 @@
              
             </div>
              <div class="card-header py-9">
-               <a href="#" class="btn btn-sm btn-success" data-toggle="modal" data-target="#modal_add_new"> <i class="fas fa-plus">Add</i> </a>
+               <a href="#" class="btn btn-sm btn-success" data-toggle="modal" data-target="#modal_add_new"><i class="fas fa-plus"> Add</i> </a>
              </div>
 
-<!-- ============ MODAL ADD TA =============== -->
+<!-- ============ MODAL ADD TUGAS AKHIR =============== -->
         <div class="modal fade" id="modal_add_new" tabindex="-1" role="dialog" aria-labelledby="largeModal" aria-hidden="true">
             <div class="modal-dialog">
             <div class="modal-content">
             <div class="modal-header">
+                        <h4 class="modal-title" id="myModalLabel"><b>Add Data Tugas Akhir</b></h4>
                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">x</button>
-                <h3 class="modal-title" id="myModalLabel">Add Data Tugas Akhir</h3>
             </div>
             <form class="form-horizontal" method="post" action="<?php echo site_url('tugasakhir/addtugasakhir');?>">
                 <div class="modal-body">
+
+                  <div class="form-group">
+                        <label class="control-label col-xs-3" >No Proposal</label>
+                        <div class="col-xs-8">
+                            <select name="NoProposal" class="form-control">
+                            <option value="0">-Pilih No Proposal-</option>
+                            <?php foreach($proposalta->result() as $rowproposalta):?>
+                                <option value="<?php echo $rowproposalta->NoProposal;?>"><?php echo $rowproposalta->NoProposal;?></option>
+                            <?php endforeach;?>
+                        </select>
+                        </div>
+                    </div>
 
                   <div class="form-group">
                         <label class="control-label col-xs-3" >Judul Tugas Akhir</label>
@@ -57,14 +69,13 @@
                         </div>
                     </div>
 
-                     </div>
+                    </div>
                       <div class="form-group">
                         <label class="control-label col-xs-3" >Tanggal Disetujui</label>
                         <div class="col-xs-8">
                             <input name="TglDisetujui" class="form-control" type="date" placeholder="Masukkan Tanggal Disetujui" required>
                         </div>
                     </div>
-
 
                     <div class="form-group">
                         <label class="control-label col-xs-3" >Pembimbing 1</label>
@@ -90,6 +101,31 @@
                         </div>
                     </div>
 
+
+                      <div class="form-group">
+                        <label class="control-label col-xs-3" >Folder Softcopy Laporan</label>
+                        <div class="col-xs-8">
+                            <input name="FolderSoftCopyLaporan" class="form-control" type="text" placeholder="Masukkan Folder Softcopy Laporan" required>
+                        </div>
+                    </div>
+
+                      <div class="form-group">
+                        <label class="control-label col-xs-3" >Folder Softcopy Source </label>
+                        <div class="col-xs-8">
+                            <input name="FolderSoftCopySource" class="form-control" type="text" placeholder="Masukkan Folder Softcopy Source" required>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="control-label col-xs-3" >Status</label>
+                        <div class="col-xs-8">
+                            <select name="Status" class="form-control">
+                            <option value="0">-Belum Disetujui-</option>
+                            <option value="1">-Disetujui-</option>
+                            </select>
+                        </div>
+                    </div>
+
                 </div>
  
                 <div class="modal-footer">
@@ -100,7 +136,7 @@
             </div>
             </div>
         </div>
-        <!--END MODAL ADD TA-->
+        <!--END MODAL ADD TUGAS AKHIR-->
 
             <div class="card-body">
               <div class="table-responsive">
@@ -132,17 +168,17 @@
                     <td><?php echo $row->NoProposal;?></td>
                     <td><?php echo $row->JudulTA;?></td>
                     <td><?php echo $row->TahunTA;?></td>
-                    <td><?php echo $row->NIM;?></td>
+                    <td><?php echo $row->NamaMahasiswa;?></td>
                     <td><?php echo $row->TglDisetujui;?></td>
-                    <td><?php echo $row->NIPPembimbing1;?></td>
-                    <td><?php echo $row->NIPPembimbing2;?></td>
-                    <td><?php echo $row->FolderSoftCopyLaporan;?></td>
-                    <td><?php echo $row->FolderSoftCopySource;?></td>
-                    <td><?php echo $row->Status;?></td>
+                     <td><?php echo $row->Pembimbing1;?></td>
+                      <td><?php echo $row->Pembimbing2;?></td>
+                      <td><?php echo $row->FolderSoftCopyLaporan;?></td>
+                      <td><?php echo $row->FolderSoftCopySource;?></td>
+                      <td><?php echo $row->Status;?></td>
                     <td>
                       <a href="#" class="btn btn-sm  btn-info" data-toggle="modal" data-target="#modal_edit<?php echo $row->NoTA;?>"> <i class="fas fa-edit"></i> </a>
                  
-                      <a href="<?php echo site_url('tugasakhir/deletekaprodi/'.$row->NoTA);?>" class="btn btn-sm  btn-danger"><i class="fas fa-trash"></i></a>
+                      <a href="#" class="btn btn-sm  btn-danger" data-toggle="modal" data-target="#modal_hapus<?php echo $row->NoTA;?>"><i class="fas fa-trash"></i></a>
                         
                       </td>
                   </tr>
@@ -161,7 +197,7 @@
 
 
 
-       <!-- ============ MODAL EDIT TA =============== -->
+       <!-- ============ MODAL EDIT TUGAS AKHIR =============== -->
     <?php
         foreach($tugasakhir->result_array() as $i):
             $NoTA=$i['NoTA'];
@@ -181,49 +217,106 @@
             <div class="modal-dialog">
             <div class="modal-content">
             <div class="modal-header">
+                 <h4 class="modal-title" id="myModalLabel"><b>Edit Data Tugas Akhir</b></h4>
                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">x</button>
-                <h4 class="modal-title" id="myModalLabel">Edit Program Studi</h4>
             </div>
-            <form class="form-horizontal" method="post" action="<?php echo site_url('tugasakhir/addkaprodi/'.$KodeProdi.'/'.$row->NIP);?>">
+            <form class="form-horizontal" method="post" action="<?php echo site_url('tugasakhir/addtugasakhir/'.$NoTA);?>">
                 <div class="modal-body">
- 
 
-                   <div class="form-group">
-                        <label class="control-label col-xs-3" >Program Studi</label>
+                  <div class="form-group">
+                        <label class="control-label col-xs-3" >No Proposal</label>
                         <div class="col-xs-8">
-                            <select name="KodeProdi" class="form-control">
-                            <option value="0">-Pilih Program Studi-</option>
-                            <?php foreach($prodi->result() as $rowprodi):?>
-                                <option value="<?php $prodis=$rowprodi->KodeProdi; echo $prodis; ?>"
-                                   <?php if($KodeProdi==$prodis){ echo 'selected';} ?>
-                                  ><?php echo $rowprodi->NamaProdi;?></option>
+                            <select name="NoProposal" class="form-control">
+                            <option value="0">-Pilih No Proposal-</option>
+                            <?php foreach($proposalta->result() as $rowproposalta):?>
+                                <option value="<?php $noproposals=$rowproposalta->NoProposal; echo $noproposals; ?>"  <?php if($NoProposal==$noproposals){ echo 'selected';} ?>
+                                ><?php echo $rowproposalta->NoProposal;?></option>
+                            <?php endforeach;?>
+                        </select>
+                        </div>
+                    </div>
+    
+                    <div class="form-group">
+                        <label class="control-label col-xs-3" >Judul Tugas Akhir</label>
+                        <div class="col-xs-8">
+                            <input name="JudulTA" class="form-control"  value="<?php echo $JudulTA;?>" type="text" placeholder="Masukkan Judul Tugas Akhir" required>
+                        </div>
+                    </div>
+                      <div class="form-group">
+                        <label class="control-label col-xs-3" >Tahun Tugas Akhir</label>
+                        <div class="col-xs-8">
+                            <input name="TahunTA" class="form-control" type="text" value="<?php echo $TahunTA;?>" placeholder="Masukkan Tahun Tugas Akhir" required>
+                        </div>
+                    </div>
+
+                  <div class="form-group">
+                        <label class="control-label col-xs-3" >Nama Mahasiswa</label>
+                        <div class="col-xs-8">
+                            <select name="NIM" class="form-control">
+                            <option value="0">-Pilih Mahasiswa-</option>
+                            <?php foreach($mahasiswa->result() as $rowmahasiswa):?>
+                                <option value="<?php $nims=$rowmahasiswa->NIM; echo $nims; ?>"  <?php if($NIM==$nims){ echo 'selected';} ?>
+                                ><?php echo $rowmahasiswa->NamaMahasiswa;?></option>
                             <?php endforeach;?>
                         </select>
                         </div>
                     </div>
 
-                    <div class="form-group">
-                        <label class="control-label col-xs-3" >Ketua Program Studi</label>
+                       <div class="form-group">
+                        <label class="control-label col-xs-3" >Tanggal Disetujui</label>
                         <div class="col-xs-8">
-                            <select name="NIP" class="form-control">
-                            <option value="0">-Pilih Ketua Program Studi-</option>
+                            <input name="TglDisetujui" class="form-control" type="date" value="<?php echo $TglDisetujui;?>" placeholder="Masukkan Tanggal Disetujui" required>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="control-label col-xs-3" >Pembimbing 1</label>
+                        <div class="col-xs-8">
+                            <select name="NIPPembimbing1" class="form-control">
+                            <option value="0">-Pilih Dosen-</option>
                             <?php foreach($dosen->result() as $rowdosen):?>
-                                <option value="<?php $dosens=$rowdosen->NIP; echo $dosens; ?>"
-                                  <?php if($NIP==$dosens){ echo 'selected';} ?>
-                                  ><?php echo $rowdosen->NamaDosen;?></option>
+                                <option value="<?php $nips=$rowdosen->NIP; echo $nips; ?>"  <?php if($NIPPembimbing1==$nips){ echo 'selected';} ?>><?php echo $rowdosen->NamaDosen;?></option>
                             <?php endforeach;?>
                         </select>
                         </div>
                     </div>
 
-                    <div class="form-group">
-                        <label class="control-label col-xs-3" >Periode</label>
+                     <div class="form-group">
+                        <label class="control-label col-xs-3" >Pembimbing 2</label>
                         <div class="col-xs-8">
-                            <input name="Periode" class="form-control" value="<?php echo $Periode;?>" type="text" placeholder="Masukkan Periode Jabatan" required>
+                            <select name="NIPPembimbing2" class="form-control">
+                            <option value="0">-Pilih Dosen-</option>
+                            <?php foreach($dosen->result() as $rowdosen):?>
+                                <option value="<?php $nips2=$rowdosen->NIP; echo $nips2;?>" <?php if($NIPPembimbing2==$nips2){ echo 'selected';} ?>><?php echo $rowdosen->NamaDosen;?></option>
+                            <?php endforeach;?>
+                        </select>
                         </div>
                     </div>
 
- 
+                        <div class="form-group">
+                        <label class="control-label col-xs-3" >Folder Softcopy Laporan</label>
+                        <div class="col-xs-8">
+                            <input name="FolderSoftCopyLaporan" class="form-control" type="text" value="<?php echo $FolderSoftCopyLaporan;?>" placeholder="Masukkan Folder Softcopy Laporan" required>
+                        </div>
+                    </div>
+
+                        <div class="form-group">
+                        <label class="control-label col-xs-3" >Folder Softcopy Source</label>
+                        <div class="col-xs-8">
+                            <input name="FolderSoftCopySource" class="form-control" type="text" value="<?php echo $FolderSoftCopySource;?>" placeholder="Masukkan Folder Softcopy Source" required>
+                        </div>
+                    </div>
+
+                     <div class="form-group">
+                        <label class="control-label col-xs-3" >Status</label>
+                        <div class="col-xs-8">
+                            <select name="Status" class="form-control">
+                            <option value="0">-Belum Disetujui-</option>
+                            <option value="1">-Disetujui-</option>
+                            </select>
+                        </div>
+                    </div>
+
  
                 </div>
  
@@ -237,7 +330,36 @@
         </div>
  
     <?php endforeach;?>
-    <!--END MODAL ADD JURUSAN-->
+    <!--END MODAL ADD TUGAS AKHIR-->
+<?php
+        foreach($tugasakhir->result_array() as $i):
+            $NoTA=$i['NoTA'];
+            $JudulTA=$i['JudulTA'];
+            $NamaMahasiswa=$i['NamaMahasiswa'];
+        ?>
+     <!-- ============ MODAL HAPUS TUGAS AKHIR=============== -->
+        <div class="modal fade" id="modal_hapus<?php echo $NoTA;?>" tabindex="-1" role="dialog" aria-labelledby="largeModal" aria-hidden="true">
+            <div class="modal-dialog">
+            <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="fas fa-trash"> Delete !</h5 >
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">x</button>
+
+            </div>
+            <form class="form-horizontal" method="post" action="<?php echo site_url('tugasakhir/deletetugasakhir/'.$NoTA);?>">
+                <div class="modal-body">
+                    <p>Hapus Data Tugas Akhir <b><?php echo $JudulTA;?></b> Atas Nama  <b><?php echo $NamaMahasiswa;?> </b> ?</p>
+                </div>
+                <div class="modal-footer">
+                    <button class="btn btn-sm btn-success " data-dismiss="modal" aria-hidden="true">Batal</button>
+                    <button class="btn btn-sm btn-danger">Hapus</button>
+                </div>
+            </form>
+            </div>
+            </div>
+        </div>
+    <?php endforeach;?>
+    <!--END MODAL HAPUS TUGAS AKHIR-->
 
      
 
