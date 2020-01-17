@@ -26,8 +26,8 @@
             <div class="modal-dialog">
             <div class="modal-content">
             <div class="modal-header">
+                        <h4 class="modal-title" id="myModalLabel"><b>Add Data Proposal Tugas Akhir</b></h4>
                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">x</button>
-                <h3 class="modal-title" id="myModalLabel">Add Data Proposal Tugas Akhir</h3>
             </div>
             <form class="form-horizontal" method="post" action="<?php echo site_url('tugasakhir/addproposalta');?>">
                 <div class="modal-body">
@@ -123,7 +123,7 @@
                     <td>
                       <a href="#" class="btn btn-sm  btn-info" data-toggle="modal" data-target="#modal_edit<?php echo $row->NoProposal;?>"> <i class="fas fa-edit"></i> </a>
                  
-                      <a href="<?php echo site_url('tugasakhir/deleteproposalta/'.$row->NoProposal);?>" class="btn btn-sm  btn-danger"><i class="fas fa-trash"></i></a>
+                      <a href="#" class="btn btn-sm  btn-danger" data-toggle="modal" data-target="#modal_hapus<?php echo $row->NoProposal;?>"><i class="fas fa-trash"></i></a>
                         
                       </td>
                   </tr>
@@ -157,8 +157,8 @@
             <div class="modal-dialog">
             <div class="modal-content">
             <div class="modal-header">
+                 <h4 class="modal-title" id="myModalLabel"><b>Edit Data Proposal Tugas Akhir</b></h4>
                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">x</button>
-                <h4 class="modal-title" id="myModalLabel">Edit Proposal TA</h4>
             </div>
             <form class="form-horizontal" method="post" action="<?php echo site_url('tugasakhir/addproposalta/'.$NoProposal);?>">
                 <div class="modal-body">
@@ -227,6 +227,35 @@
  
     <?php endforeach;?>
     <!--END MODAL ADD PROPOSAL-->
+<?php
+        foreach($proposalta->result_array() as $i):
+            $NoProposal=$i['NoProposal'];
+            $JudulProposal=$i['JudulProposal'];
+            $NamaMahasiswa=$i['NamaMahasiswa'];
+        ?>
+     <!-- ============ MODAL HAPUS PROPOSALTA=============== -->
+        <div class="modal fade" id="modal_hapus<?php echo $NoProposal;?>" tabindex="-1" role="dialog" aria-labelledby="largeModal" aria-hidden="true">
+            <div class="modal-dialog">
+            <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="fas fa-trash"> Delete !</h5 >
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">x</button>
+
+            </div>
+            <form class="form-horizontal" method="post" action="<?php echo site_url('tugasakhir/deleteproposalta/'.$NoProposal);?>">
+                <div class="modal-body">
+                    <p>Hapus data Proposal <b><?php echo $JudulProposal;?></b> Atas Nama  <b><?php echo $NamaMahasiswa;?> </b> ?</p>
+                </div>
+                <div class="modal-footer">
+                    <button class="btn btn-sm btn-success " data-dismiss="modal" aria-hidden="true">Batal</button>
+                    <button class="btn btn-sm btn-danger">Hapus</button>
+                </div>
+            </form>
+            </div>
+            </div>
+        </div>
+    <?php endforeach;?>
+    <!--END MODAL HAPUS PROPOSALTA-->
 
      
 

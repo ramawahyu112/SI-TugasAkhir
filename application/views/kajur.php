@@ -26,8 +26,8 @@
             <div class="modal-dialog">
             <div class="modal-content">
             <div class="modal-header">
+               <h4 class="modal-title" id="myModalLabel"><b>Add Ketua  Jurusan</b></h4>
                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">x</button>
-                <h3 class="modal-title" id="myModalLabel">Add Data Jurusan</h3>
             </div>
             <form class="form-horizontal" method="post" action="<?php echo site_url('tugasakhir/addkajur');?>">
                 <div class="modal-body">
@@ -101,7 +101,7 @@
                     <td>
                       <a href="#" class="btn btn-sm  btn-info" data-toggle="modal" data-target="#modal_edit<?php echo $row->KodeJurusan;?>"><i class="fas fa-edit"></i> </a>
                  
-                      <a href="<?php echo site_url('tugasakhir/deletekajur/'.$row->KodeJurusan.'/'.$row->NIP);?>" class="btn  btn-sm btn-danger"><i class="fas fa-trash"></i></a>
+                      <a href="#" data-toggle="modal" data-target="#modal_hapus<?php echo $row->KodeJurusan;?>" class="btn  btn-sm btn-danger"><i class="fas fa-trash"></i></a>
                         
                       </td>
                   </tr>
@@ -132,10 +132,10 @@
             <div class="modal-dialog">
             <div class="modal-content">
             <div class="modal-header">
+                <h4 class="modal-title" id="myModalLabel"><b>Edit Ketua  Jurusan</b></h4>
                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">x</button>
-                <h4 class="modal-title" id="myModalLabel">Edit Jurusan</h4>
             </div>
-            <form class="form-horizontal" method="post" action="<?php echo site_url('tugasakhir/addkajur/'.$KodeJurusan.'/'.$row->NIP);?>">
+            <form class="form-horizontal" method="post" action="<?php echo site_url('tugasakhir/addkajur/'.$KodeJurusan.'/'.$NIP);?>">
                 <div class="modal-body">
  
 
@@ -189,6 +189,37 @@
  
     <?php endforeach;?>
     <!--END MODAL ADD JURUSAN-->
+
+    <?php
+        foreach($kajur->result_array() as $i):
+            $KodeJurusan=$i['KodeJurusan'];
+            $NIP=$i['NIP'];
+            $NamaDosen=$i['NamaDosen'];
+            $Periode=$i['Periode'];
+        ?>
+     <!-- ============ MODAL HAPUS KETUA JURUSAN =============== -->
+        <div class="modal fade" id="modal_hapus<?php echo $KodeJurusan;?>" tabindex="-1" role="dialog" aria-labelledby="largeModal" aria-hidden="true">
+            <div class="modal-dialog">
+            <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="fas fa-trash"> Delete !</h5 >
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">x</button>
+
+            </div>
+            <form class="form-horizontal" method="post" action="<?php echo site_url('tugasakhir/deletekajur/'.$KodeJurusan.'/'.$NIP);?>">
+                <div class="modal-body">
+                    <p>Hapus data Ketua Jurusan <b><?php echo $NamaDosen;?></b> periode   <b><?php echo $Periode;?> </b> ?</p>
+                </div>
+                <div class="modal-footer">
+                    <button class="btn btn-sm btn-success " data-dismiss="modal" aria-hidden="true">Batal</button>
+                    <button class="btn btn-sm btn-danger">Hapus</button>
+                </div>
+            </form>
+            </div>
+            </div>
+        </div>
+    <?php endforeach;?>
+    <!--END MODAL HAPUS KETUA JURUSAN-->
 
      
 

@@ -26,8 +26,8 @@
             <div class="modal-dialog">
             <div class="modal-content">
             <div class="modal-header">
+               <h4 class="modal-title" id="myModalLabel"><b>Add Program Studi</b></h4>
                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">x</button>
-                <h3 class="modal-title" id="myModalLabel">Add Program Studi</h3>
             </div>
             <form class="form-horizontal" method="post" action="<?php echo site_url('tugasakhir/addprodi');?>">
                 <div class="modal-body">
@@ -142,8 +142,8 @@
             <div class="modal-dialog">
             <div class="modal-content">
             <div class="modal-header">
+               <h4 class="modal-title" id="myModalLabel"><b>Edit Program Studi</b></h4>
                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">x</button>
-                <h3 class="modal-title" id="myModalLabel">Edit Program Studi</h3>
             </div>
             <form class="form-horizontal" method="post" action="<?php echo site_url('tugasakhir/addprodi/'.$KodeProdi);?>">
                 <div class="modal-body">
