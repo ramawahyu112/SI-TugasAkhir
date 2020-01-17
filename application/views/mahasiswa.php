@@ -26,8 +26,8 @@
             <div class="modal-dialog">
             <div class="modal-content">
             <div class="modal-header">
+                      <h4 class="modal-title" id="myModalLabel"><b>Add Mahasiswa</b></h4>
                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">x</button>
-                <h3 class="modal-title" id="myModalLabel">Add Mahasiswa</h3>
             </div>
             <form class="form-horizontal" method="post" action="<?php echo site_url('tugasakhir/addmahasiswa');?>">
                 <div class="modal-body">
@@ -163,8 +163,9 @@
             <div class="modal-dialog">
             <div class="modal-content">
             <div class="modal-header">
+                 <h4 class="modal-title" id="myModalLabel"><b>Edit Mahasiswa</b></h4>
                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">x</button>
-                <h3 class="modal-title" id="myModalLabel">Edit Mahasiswa</h3>
+    
             </div>
             <form class="form-horizontal" method="post" action="<?php echo site_url('tugasakhir/addmahasiswa/'.$NIM);?>">
                 <div class="modal-body">
