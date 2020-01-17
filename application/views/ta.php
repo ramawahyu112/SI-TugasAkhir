@@ -29,7 +29,7 @@
                         <h4 class="modal-title" id="myModalLabel"><b>Add Data Tugas Akhir</b></h4>
                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">x</button>
             </div>
-            <form class="form-horizontal" method="post" action="<?php echo site_url('tugasakhir/addtugasakhir');?>">
+            <form class="form-horizontal" method="post" action="<?php echo site_url('tugasakhir/addta');?>">
                 <div class="modal-body">
 
                   <div class="form-group">
@@ -69,7 +69,7 @@
                         </div>
                     </div>
 
-                    </div>
+                    
                       <div class="form-group">
                         <label class="control-label col-xs-3" >Tanggal Disetujui</label>
                         <div class="col-xs-8">
@@ -220,7 +220,7 @@
                  <h4 class="modal-title" id="myModalLabel"><b>Edit Data Tugas Akhir</b></h4>
                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">x</button>
             </div>
-            <form class="form-horizontal" method="post" action="<?php echo site_url('tugasakhir/addtugasakhir/'.$NoTA);?>">
+            <form class="form-horizontal" method="post" action="<?php echo site_url('tugasakhir/addta/'.$NoTA);?>">
                 <div class="modal-body">
 
                   <div class="form-group">
@@ -346,7 +346,7 @@
                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">x</button>
 
             </div>
-            <form class="form-horizontal" method="post" action="<?php echo site_url('tugasakhir/deletetugasakhir/'.$NoTA);?>">
+            <form class="form-horizontal" method="post" action="<?php echo site_url('tugasakhir/deleteta/'.$NoTA);?>">
                 <div class="modal-body">
                     <p>Hapus Data Tugas Akhir <b><?php echo $JudulTA;?></b> Atas Nama  <b><?php echo $NamaMahasiswa;?> </b> ?</p>
                 </div>

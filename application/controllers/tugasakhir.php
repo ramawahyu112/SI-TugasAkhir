@@ -13,6 +13,7 @@ class tugasakhir extends CI_Controller {
 			$this->load->model('kajur_model','',TRUE);
 			$this->load->model('kaprodi_model','',TRUE);
 			$this->load->model('proposalta_model','',TRUE);
+			$this->load->model('tugasakhir_model','',TRUE);
 			
 
 	}
