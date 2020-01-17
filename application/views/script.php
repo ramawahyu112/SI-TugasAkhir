@@ -40,9 +40,18 @@
 
 </body>
  <!-- Bootstrap core JavaScript-->
+<!-- <script>
+    $(function () {
+    $('#datepicker').datepicker({
+    autoclose: true
+  });
+  });
+  </script> -->
+ 
   <script src="<?php echo base_url()?>assets/jquery/jquery.min.js"></script>
   <script src="<?php echo base_url()?>assets/jquery/jquery.min.js"></script>
   <script src="<?php echo base_url()?>assets/bootstrap/js/bootstrap.bundle.min.js"></script>
+
 
   <!-- Core plugin JavaScript-->
   <script src="<?php echo base_url()?>assets/jquery-easing/jquery.easing.min.js"></script>
@@ -63,3 +72,4 @@
 
   <!-- Page level custom scripts -->
   <script src="<?php echo base_url()?>js/demo/datatables-demo.js"></script>
+  <script src="<?php echo base_url()?>js/demo/bootstrap-datepicker.js"></script>

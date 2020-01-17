@@ -18,6 +18,8 @@
   <!-- Custom styles for this template-->
   <link href="<?php echo base_url() ?>css/sb-admin-2.min.css" rel="stylesheet">
   <link href="<?php echo base_url() ?>assets/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
+  <link href="<?php echo base_url() ?>css/datepicker.css" rel="stylesheet">
+
 
 </head>
 
@@ -150,7 +152,7 @@
           <div class="bg-white py-2 collapse-inner rounded">
            <!--  <h6 class="collapse-header">Custom Components:</h6> -->
             <a class="collapse-item" href="<?php echo site_url('tugasakhir/proposalta');?>">Proposal Tugas Akhir</a>
-            <a class="collapse-item" href="<?php echo site_url('tugasakhir/tugasakhir');?>">Tugas Akhir</a>
+            <a class="collapse-item" href="<?php echo site_url('tugasakhir/ta');?>">Tugas Akhir</a>
           </div>
         </div>
       </li>

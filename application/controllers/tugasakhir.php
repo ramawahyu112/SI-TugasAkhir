@@ -290,21 +290,21 @@ function addproposalta(){
 
 
 // START tugaskhir FUNCTION
-	function tugasakhir(){
+	function ta(){
 	$data['tugasakhir'] = $this->tugasakhir_model->get_tugasakhir();
 	$data['mahasiswa'] = $this->mahasiswa_model->get_mahasiswa();
 	$data['proposalta'] = $this->proposalta_model->get_proposalta();
 	$data['dosen'] = $this->dosen_model->get_dosen();
-	$this->load->view('tugasakhir',$data);
+	$this->load->view('ta',$data);
 	}
 
-	function deletetugasakhir(){
+	function deleteta(){
     $NoTA = $this->uri->segment(3);
     $this->tugasakhir_model->delete($NoTA);
-    redirect('tugasakhir/tugasakhir');
+    redirect('tugasakhir/ta');
 }
 
-function addtugasakhir(){
+function addta(){
 	 $NoTA = $this->uri->segment(3);
 	$tugasakhir = array('NoProposal' => $this->input->post('NoProposal'),
 		'JudulTA' => $this->input->post('JudulTA'),
@@ -325,7 +325,7 @@ function addtugasakhir(){
 
 	}
 	
-    redirect('tugasakhir/tugasakhir');
+    redirect('tugasakhir/ta');
 }
 
 
