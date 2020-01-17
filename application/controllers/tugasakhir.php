@@ -288,6 +288,49 @@ function addproposalta(){
 
 	// END proposalta FUNCTION
 
+
+// START tugaskhir FUNCTION
+	function tugasakhir(){
+	$data['tugasakhir'] = $this->tugasakhir_model->get_tugasakhir();
+	$data['mahasiswa'] = $this->mahasiswa_model->get_mahasiswa();
+	$data['proposalta'] = $this->proposalta_model->get_proposalta();
+	$data['dosen'] = $this->dosen_model->get_dosen();
+	$this->load->view('tugasakhir',$data);
+	}
+
+	function deletetugasakhir(){
+    $NoTA = $this->uri->segment(3);
+    $this->tugasakhir_model->delete($NoTA);
+    redirect('tugasakhir/tugasakhir');
+}
+
+function addtugasakhir(){
+	 $NoTA = $this->uri->segment(3);
+	$tugasakhir = array('NoProposal' => $this->input->post('NoProposal'),
+		'JudulTA' => $this->input->post('JudulTA'),
+		'TahunTA' => $this->input->post('TahunTA'),
+		'NIM' => $this->input->post('NIM'),
+		'TglDisetujui' => $this->input->post('TglDisetujui'),
+		'NIPPembimbing1' => $this->input->post('NIPPembimbing1'),
+		'NIPPembimbing2' => $this->input->post('NIPPembimbing2'),
+		'FolderSoftCopyLaporan' => $this->input->post('FolderSoftCopyLaporan'),
+		'FolderSoftCopySource'=> $this->input->post('FolderSoftCopySource'),
+		'Status' => $this->input->post('Status'));
+
+	if($NoTA!=0){
+		$this->tugasakhir_model->update($NoTA,$tugasakhir);
+
+	}else{
+	$NoTA = $this->tugasakhir_model->save($tugasakhir);
+
+	}
+	
+    redirect('tugasakhir/tugasakhir');
+}
+
+
+	// END tugasakhir FUNCTION
+
 function login()
 	{
 		$this->load->view('login');
