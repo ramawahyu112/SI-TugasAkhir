@@ -22,7 +22,9 @@ class tugasakhir extends CI_Controller {
 
 	function index()
 	{
-		$this->load->view('halamanutama');
+			$this->load->view('login');
+			
+		// $this->load->view('halamanutama');
 	}
 
 	// START ACCOUNT FUNCTION
@@ -400,6 +402,6 @@ function ta_upload()
 
 function login()
 	{
-		$this->load->view('login');
+	
 	}
 }

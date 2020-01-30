@@ -207,7 +207,7 @@
                     <div class="form-group">
                         <label class="control-label col-xs-3" >NIDN</label>
                         <div class="col-xs-8">
-                            <input name="NIDN" value="<?php echo $NIDN;?>" class="form-control" type="text" placeholder="Masukkan NIDN required>
+                            <input name="NIDN" value="<?php echo $NIDN;?>" class="form-control" type="text" placeholder="Masukkan NIDN" required>
                         </div>
                     </div>
  
@@ -221,7 +221,7 @@
                     <div class="form-group">
                         <label class="control-label col-xs-3" >Alamat</label>
                         <div class="col-xs-8">
-                            <textarea name="Alamat" class="form-control"  placeholder="Masukkan Alamat" required><?php echo $Alamat;?> </textarea> >
+                            <textarea name="Alamat" class="form-control"  placeholder="Masukkan Alamat" required><?php echo $Alamat;?> </textarea> 
                         </div>
                     </div>
                     <div class="form-group">
