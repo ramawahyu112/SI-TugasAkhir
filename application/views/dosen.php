@@ -3,23 +3,26 @@
   include "header.php"
 ?>
 
+        <!-- Container Fluid-->
+        <div class="container-fluid" id="container-wrapper">
+          <div class="d-sm-flex align-items-center justify-content-between mb-4">
+            <h1 class="h3 mb-0 text-gray-800">LIST DATA DOSEN</h1>
+            <ol class="breadcrumb">
+               <li class="breadcrumb-item   " ><a href="./">Home</a></li>
+              <li class="breadcrumb-item">Master Data</li>
+              <li class="breadcrumb-item active" aria-current="page">Data Dosen</li>
+            </ol>
+          </div>
 
-        <!-- Begin Page Content -->
-        <div class="container-fluid">
-
-          <!-- Page Heading -->
-  <!--<h1 class="h3 mb-2 text-gray-800">Tables</h1>
-          <p class="mb-4">DataTables is a third party plugin that is used to generate the demo table below. For more information about DataTables, please visit the <a target="_blank" href="https://datatables.net">official DataTables documentation</a>.</p>-->
-
-          <!-- DataTales Example -->
-          <div class="card shadow mb-4">
-            <div class="card-header py-3">
-              <h6 class="m-0 font-weight-bold text-primary">LIST DATA DOSEN</h6>
-             
-            </div>
-             <div class="card-header py-9">
-               <a href="#" class="btn btn-sm btn-success" data-toggle="modal" data-target="#modal_add_new"> <i class="fas fa-plus">Add </i></a>
-             </div>
+          <!-- Row -->
+          <div class="row">
+          
+            <!-- DataTable with Hover -->
+            <div class="col-lg-12">
+              <div class="card mb-4">
+                <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+                  <a href="#" class="btn btn-sm btn-success" data-toggle="modal" data-target="#modal_add_new"> <i class="fas fa-plus">Add </i></a>
+                </div>
 
 <!-- ============ MODAL ADD DOSEN =============== -->
         <div class="modal fade" id="modal_add_new" tabindex="-1" role="dialog" aria-labelledby="largeModal" aria-hidden="true">
@@ -113,27 +116,27 @@
         </div>
         <!--END MODAL ADD BARANG-->
 
-            <div class="card-body">
-              <div class="table-responsive">
-                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0" id="mydata">
-                  <thead>
-                    <tr>
+                <div class="table-responsive p-3">
+                  <table class="table align-items-center table-flush table-hover" id="dataTableHover">
+                    <thead class="thead-light">
+                     <tr>
                       <th width="20">No</th>
                       <th width="30">NIP</th>
                       <th width="30">NIDN</th>
-                      <th>Nama</th>
+                      <th width="30">Nama</th>
                       <th>Alamat</th>
                       <th>No. Telp</th>
                       <th width="10">Golongan</th>
-                      <th>Pangkat</th>
-                      <th>Pendidikan</th>
+                      <th width="10">Pangkat</th>
+                      <th width="10">Pendidikan</th>
                       <th>Username</th>
                       <th>Password</th>
                     <th>Action</th>
                     </tr>
-                  </thead>
-                  <tbody>
+                    </thead>
                    
+                    <tbody>
+                     
                     <?php
                      $count = 0;
                       foreach ($dosen->result() as $row) :
@@ -160,21 +163,16 @@
                       </td>
                   </tr>
                 <?php endforeach;?>
-                  </tbody>
-                </table>
+                    
+                    </tbody>
+                  </table>
+                </div>
               </div>
             </div>
           </div>
+          <!--Row-->
 
-        </div>
-        <!-- /.container-fluid -->
-
-      </div>
-      <!-- End of Main Content -->
-
-
-
-       <!-- ============ MODAL EDIT DOSEN =============== -->
+      <!-- ============ MODAL EDIT DOSEN =============== -->
     <?php
         foreach($dosen->result_array() as $i):
             $NIP=$i['NIP'];
@@ -282,14 +280,8 @@
     <?php endforeach;?>
     <!--END MODAL ADD DOSEN-->
 
-     
 
- <?php include "script.php"?>
- <script>
-    $(document).ready(function(){
-        $('#mydata').DataTable();
-    });
-</script>
-
-
-</html>
+        </div>
+        <!---Container Fluid-->
+<?php include "script.php"?>
+  

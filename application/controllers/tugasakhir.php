@@ -319,7 +319,6 @@ function addta(){
 		'TglDisetujui' => $this->input->post('TglDisetujui'),
 		'NIPPembimbing1' => $this->input->post('NIPPembimbing1'),
 		'NIPPembimbing2' => $this->input->post('NIPPembimbing2'),
-		'FolderSoftCopySource'=> $this->input->post('FolderSoftCopySource'),
 		'Status' => $this->input->post('Status'));
 
 
@@ -332,7 +331,6 @@ function addta(){
 		'NIPPembimbing1' => $this->input->post('NIPPembimbing1'),
 		'NIPPembimbing2' => $this->input->post('NIPPembimbing2'),
 		'FolderSoftCopyLaporan' => $simpanfile,
-		'FolderSoftCopySource'=> $this->input->post('FolderSoftCopySource'),
 		'Status' => $this->input->post('Status'));
 
 	 }
@@ -351,7 +349,7 @@ function addta(){
 }
 function ta_upload()
 	{
-        $config['upload_path'] = './uploadta/'; 
+        $config['upload_path'] = './assets/uploadta/'; 
 		$config['overwrite'] = 'FALSE';
 		$config['allowed_types'] = 'doc|docx|pdf|zip|rar';
 		$config['max_size']	= '5120'; 
@@ -384,7 +382,7 @@ function ta_upload()
 }
 	 function downloadta(){
 		  $name=$this->uri->segment(3);	
-		  $path="./uploadta/".$name;
+		  $path="./assets/uploadta/".$name;
 
 	 	  if(file_exists($path)){
 	 	  	$file = file_get_contents($path);	
