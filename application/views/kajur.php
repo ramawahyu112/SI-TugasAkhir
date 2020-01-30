@@ -80,10 +80,10 @@
                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0" id="mydata">
                   <thead>
                     <tr>
-                      <th>No</th>
+                      <th width="20">No</th>
                       <th>Jurusan</th>
                       <th>Ketua Jurusan</th>
-                      <th>Periode</th>
+                      <th width="50">Periode</th>
                        <th>Action</th>
                     </tr>
                   </thead>

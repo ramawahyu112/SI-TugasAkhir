@@ -56,7 +56,7 @@
                     <div class="form-group">
                         <label class="control-label col-xs-3" >Alamat</label>
                         <div class="col-xs-8">
-                            <input name="Alamat" class="form-control" type="text" placeholder="Masukkan Alamat" required>
+                            <textarea name="Alamat" class="form-control"  placeholder="Masukkan Alamat" required></textarea> 
                         </div>
                     </div>
                     <div class="form-group">
@@ -118,15 +118,15 @@
                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0" id="mydata">
                   <thead>
                     <tr>
-                      <th>No</th>
-                      <th>NIP</th>
-                      <th>NIDN</th>
-                      <th>Nama Dosen</th>
+                      <th width="20">No</th>
+                      <th width="30">NIP</th>
+                      <th width="30">NIDN</th>
+                      <th>Nama</th>
                       <th>Alamat</th>
-                      <th>Nomor Telepon</th>
-                      <th>Golongan</th>
+                      <th>No. Telp</th>
+                      <th width="10">Golongan</th>
                       <th>Pangkat</th>
-                      <th>Pendidikan Terakhir</th>
+                      <th>Pendidikan</th>
                       <th>Username</th>
                       <th>Password</th>
                     <th>Action</th>
@@ -223,7 +223,7 @@
                     <div class="form-group">
                         <label class="control-label col-xs-3" >Alamat</label>
                         <div class="col-xs-8">
-                            <input name="Alamat" value="<?php echo $Alamat;?>" class="form-control" type="text" placeholder="Masukkan Alamat" required>
+                            <textarea name="Alamat" class="form-control"  placeholder="Masukkan Alamat" required><?php echo $Alamat;?> </textarea> >
                         </div>
                     </div>
                     <div class="form-group">

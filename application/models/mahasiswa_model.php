@@ -3,13 +3,17 @@ class mahasiswa_model extends CI_Model {
 	
 	private $primary_key= 'NIM';
 	private $table_name= 'mahasiswa';
+	private $table_foreign= 'prodi';
 
 	function __construct(){
 		parent::__construct();
 	}
 
 	 function get_mahasiswa(){
-    $result = $this->db->get($this->table_name);
+	 	$this->db->select('mahasiswa.*, prodi.NamaProdi');
+	 	$this->db->from($this->table_name);
+	 	$this->db->join($this->table_foreign, 'prodi.KodeProdi=mahasiswa.KodeProdi');
+    	$result = $this->db->get();
     return $result;
   }
 

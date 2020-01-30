@@ -98,7 +98,7 @@
                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0" id="mydata">
                   <thead>
                     <tr>
-                      <th>No</th>
+                      <th width="20">No</th>
                       <th>Judul Proposal</th>
                       <th>Tahun Proposal</th>
                       <th>Nama Mahasiswa</th>

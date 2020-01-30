@@ -17,6 +17,13 @@ class prodi_model extends CI_Model {
     	$result = $this->db->get();
     return $result;
   }
+ function get_prodi1(){
+	 	$this->db->select('*');
+	 	$this->db->from($this->table_name);
+    	$result = $this->db->get();
+    return $result;
+  }
+
 
  	function delete($id){
 		$this->db->where($this->primary_key, $id);

@@ -62,7 +62,7 @@
                     <div class="form-group">
                         <label class="control-label col-xs-3" >Alamat</label>
                         <div class="col-xs-8">
-                            <input name="Alamat" class="form-control" type="text" placeholder="Masukkan Alamat" required>
+                            <textarea name="Alamat" class="form-control" placeholder="Masukkan Alamat" required></textarea> 
                         </div>
                     </div>
 
@@ -73,10 +73,17 @@
                         </div>
                     </div>
 
-                    <div class="form-group">
-                        <label class="control-label col-xs-3" >Kode Program Studi</label>
+                     <div class="form-group">
+                        <label class="control-label col-xs-3" >Program Studi</label>
                         <div class="col-xs-8">
-                            <input name="KodeProdi" class="form-control" type="text" placeholder="Masukkan Kode Program Studi" required>
+
+                          <select name="KodeProdi" class="form-control">
+                            <option value="0">-Pilih Program Studi-</option>
+                            <?php foreach($prodi->result() as $rowprodi):?>
+                                <option value="<?php echo $rowprodi->KodeProdi;?>"><?php echo $rowprodi->NamaProdi;?></option>
+                            <?php endforeach;?>
+                        </select>
+                     
                         </div>
                     </div>
  
@@ -97,14 +104,14 @@
                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0" id="mydata">
                   <thead>
                     <tr>
-                      <th>No</th>
+                      <th width="20">No</th>
                       <th>Username</th>
                       <th>Password</th>
                       <th>NIM</th>
-                      <th>Nama Mahasiswa</th>
+                      <th>Nama </th>
                       <th>Alamat</th>
-                      <th>No. Telepon</th>
-                      <th>Kode Program Studi</th>
+                      <th>No. Telp</th>
+                      <th>Program Studi</th>
                        <th>Action</th>
                     </tr>
                   </thead>
@@ -113,7 +120,8 @@
                     <?php
                      $count = 0;
                       foreach ($mahasiswa->result() as $row) :
-                        $count++; ?>
+                        $count++; 
+                        ?>
                   <tr>
                     <td><?php echo $count?></td>
                     <td><?php echo $row->Username;?></td>
@@ -122,7 +130,7 @@
                     <td><?php echo $row->NamaMahasiswa;?></td>
                     <td><?php echo $row->Alamat;?></td>
                     <td><?php echo $row->NoTelp;?></td>
-                    <td><?php echo $row->KodeProdi;?></td>
+                    <td><?php echo $row->NamaProdi;?></td>
                     <td>
                       <a href="#" class="btn btn-sm  btn-info" data-toggle="modal" data-target="#modal_edit<?php echo $row->NIM;?>"> <i class="fas fa-edit"></i> </a>
                  
@@ -173,7 +181,7 @@
                     <div class="form-group">
                         <label class="control-label col-xs-3" >Username</label>
                         <div class="col-xs-8">
-                            <input name="Username" value="<?php echo $Username;?>" class="form-control" type="text" placeholder="Masukkan Username Anda" readonly>
+                            <input name="Username" value="<?php echo $Username;?>" class="form-control" type="text" placeholder="Masukkan Username Anda" required>
                         </div>
                     </div>
  
@@ -200,7 +208,7 @@
                     <div class="form-group">
                         <label class="control-label col-xs-3" >Alamat</label>
                         <div class="col-xs-8">
-                            <input name="Alamat" value="<?php echo $Alamat;?>" class="form-control" type="text" placeholder="Masukkan Alamat" required>
+                            <textarea name="Alamat"class="form-control"  placeholder="Masukkan Alamat" required><?php echo $Alamat;?>  </textarea> 
                         </div>
                     </div>
 
@@ -212,9 +220,16 @@
                     </div>
 
                     <div class="form-group">
-                        <label class="control-label col-xs-3" >Kode Program Studi</label>
+                        <label class="control-label col-xs-3" >Program Studi</label>
                         <div class="col-xs-8">
-                            <input name="KodeProdi" value="<?php echo $KodeProdi;?>" class="form-control" type="text" placeholder="Masukkan Kode Program Studi" required>
+                             <select name="KodeProdi" class="form-control">
+                            <option value="0">-Pilih Program Studi-</option>
+                            <?php foreach($prodi->result() as $rowprodi):?>
+                                <option value="<?php $pro=$rowprodi->KodeProdi; echo $pro; ?>" 
+                                  <?php if($KodeProdi==$pro){ echo 'selected';} ?>
+                                  ><?php echo $rowprodi->NamaProdi;?></option>
+                            <?php endforeach;?>
+                        </select>
                         </div>
                     </div>
  

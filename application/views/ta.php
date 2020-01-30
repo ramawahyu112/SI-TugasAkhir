@@ -29,7 +29,7 @@
                         <h4 class="modal-title" id="myModalLabel"><b>Add Data Tugas Akhir</b></h4>
                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">x</button>
             </div>
-            <form class="form-horizontal" method="post" action="<?php echo site_url('tugasakhir/addta');?>">
+            <form class="form-horizontal" method="post" enctype="multipart/form-data" action="<?php echo site_url('tugasakhir/addta');?>">
                 <div class="modal-body">
 
                   <div class="form-group">
@@ -69,7 +69,7 @@
                         </div>
                     </div>
 
-                    
+                   
                       <div class="form-group">
                         <label class="control-label col-xs-3" >Tanggal Disetujui</label>
                         <div class="col-xs-8">
@@ -105,7 +105,7 @@
                       <div class="form-group">
                         <label class="control-label col-xs-3" >Folder Softcopy Laporan</label>
                         <div class="col-xs-8">
-                            <input name="FolderSoftCopyLaporan" class="form-control" type="text" placeholder="Masukkan Folder Softcopy Laporan" required>
+                            <input name="FolderSoftCopyLaporan" accept=".doc,.docx, .pdf,.zip,.rar" class="form-control" type="file" >
                         </div>
                     </div>
 
@@ -124,14 +124,13 @@
                             <option value="1">-Disetujui-</option>
                             </select>
                         </div>
-                    </div>
-
                 </div>
  
                 <div class="modal-footer">
                     <button class="btn" data-dismiss="modal" aria-hidden="true">Tutup</button>
-                    <button class="btn btn-info">Simpan</button>
+                    <input class="btn btn-info" type="submit" value="Simpan" />
                 </div>
+                 </div>
             </form>
             </div>
             </div>
@@ -143,16 +142,15 @@
                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0" id="mydata">
                   <thead>
                     <tr>
-                      <th>No</th>
+                      <th width="20">No</th>
                       <th>No Proposal</th>
-                      <th>Judul Tugas Akhir</th>
-                      <th>Tahun Tugas Akhir</th>
-                      <th>Nama Mahasiswa</th>
-                      <th>Tanggal Disetujui</th>
-                      <th>Pembimbing 1</th>
-                      <th>Pembimbing 2</th>
-                      <th>Folder Softcopy Laporan</th>
-                      <th>Folder Softcopy Source</th>
+                      <th>Judul TA</th>
+                      <th>Tahun TA</th>
+                      <th>Nama</th>
+                      <th>Tgl Disetujui</th>
+ <!--                      <th>Pembimbing 1</th>
+                      <th>Pembimbing 2</th> -->
+                      <th width="20%">Softcopy Laporan</th>  
                       <th>Status</th>
                        <th>Action</th>
                     </tr>
@@ -162,7 +160,17 @@
                     <?php
                      $count = 0;
                       foreach ($tugasakhir->result() as $row) :
-                        $count++; ?>
+                        $count++;
+
+                        if($row->Status=="1"){
+                          $stt="Disetujui";
+
+                        }else{
+                           $stt="Belum Disetujui";
+                        }
+
+
+                         ?>
                   <tr>
                     <td><?php echo $count?></td>
                     <td><?php echo $row->NoProposal;?></td>
@@ -170,12 +178,16 @@
                     <td><?php echo $row->TahunTA;?></td>
                     <td><?php echo $row->NamaMahasiswa;?></td>
                     <td><?php echo $row->TglDisetujui;?></td>
-                     <td><?php echo $row->Pembimbing1;?></td>
-                      <td><?php echo $row->Pembimbing2;?></td>
-                      <td><?php echo $row->FolderSoftCopyLaporan;?></td>
-                      <td><?php echo $row->FolderSoftCopySource;?></td>
-                      <td><?php echo $row->Status;?></td>
-                    <td>
+<!--                      <td><?php echo $row->Pembimbing1;?></td>
+                      <td><?php echo $row->Pembimbing2;?></td> -->
+                     <!--  <td><?php echo $row->FolderSoftCopyLaporan;?></td> -->
+                      <td>
+                    <a href="<?php echo site_url('tugasakhir/downloadta/'.$row->FolderSoftCopyLaporan); ?>">
+                      <i class="fas fa-file"></i> <?php echo $row->FolderSoftCopyLaporan;?></a>
+                      </td>
+
+                      <td><?php echo  $stt ;?></td>
+                     <td>
                       <a href="#" class="btn btn-sm  btn-info" data-toggle="modal" data-target="#modal_edit<?php echo $row->NoTA;?>"> <i class="fas fa-edit"></i> </a>
                  
                       <a href="#" class="btn btn-sm  btn-danger" data-toggle="modal" data-target="#modal_hapus<?php echo $row->NoTA;?>"><i class="fas fa-trash"></i></a>
@@ -220,7 +232,7 @@
                  <h4 class="modal-title" id="myModalLabel"><b>Edit Data Tugas Akhir</b></h4>
                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">x</button>
             </div>
-            <form class="form-horizontal" method="post" action="<?php echo site_url('tugasakhir/addta/'.$NoTA);?>">
+            <form class="form-horizontal" method="post" enctype="multipart/form-data"  action="<?php echo site_url('tugasakhir/addta/'.$NoTA);?>">
                 <div class="modal-body">
 
                   <div class="form-group">
@@ -293,17 +305,19 @@
                         </div>
                     </div>
 
-                        <div class="form-group">
+                       <div class="form-group">
                         <label class="control-label col-xs-3" >Folder Softcopy Laporan</label>
                         <div class="col-xs-8">
-                            <input name="FolderSoftCopyLaporan" class="form-control" type="text" value="<?php echo $FolderSoftCopyLaporan;?>" placeholder="Masukkan Folder Softcopy Laporan" required>
+                            <input name="FolderSoftCopyLaporan" accept=".doc,.docx, .pdf,.zip,.rar" class="form-control" type="file" >
                         </div>
                     </div>
+
 
                         <div class="form-group">
                         <label class="control-label col-xs-3" >Folder Softcopy Source</label>
                         <div class="col-xs-8">
-                            <input name="FolderSoftCopySource" class="form-control" type="text" value="<?php echo $FolderSoftCopySource;?>" placeholder="Masukkan Folder Softcopy Source" required>
+
+                            <input name="FolderSoftCopySource"  class="form-control" type="text" value="<?php echo $FolderSoftCopySource;?>" placeholder="Masukkan Folder Softcopy Source" required>
                         </div>
                     </div>
 
@@ -311,8 +325,8 @@
                         <label class="control-label col-xs-3" >Status</label>
                         <div class="col-xs-8">
                             <select name="Status" class="form-control">
-                            <option value="0">-Belum Disetujui-</option>
-                            <option value="1">-Disetujui-</option>
+                            <option value="0" <?php if($Status=="0"){ echo "selected"; } ?>>Belum Disetujui</option>
+                            <option value="1" <?php if($Status=="1"){ echo "selected"; } ?>>Disetujui</option>
                             </select>
                         </div>
                     </div>
@@ -322,7 +336,7 @@
  
                 <div class="modal-footer">
                     <button class="btn" data-dismiss="modal" aria-hidden="true">Tutup</button>
-                    <button class="btn btn-info">Update</button>
+                    <input type="submit" name="submit" value="Update" class="btn btn-info"> 
                 </div>
             </form>
             </div>

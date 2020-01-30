@@ -6,6 +6,8 @@ class tugasakhir extends CI_Controller {
 	function __construct()
 	{
 		parent::__construct();
+			$this->load->helper(array('form', 'url','download'));
+			$this->load->library('upload');
 			$this->load->model('mahasiswa_model','',TRUE);
 			$this->load->model('jurusan_model','',TRUE);
 			$this->load->model('dosen_model','',TRUE);
@@ -28,6 +30,7 @@ class tugasakhir extends CI_Controller {
 	{
 
 	$data['mahasiswa'] = $this->mahasiswa_model->get_mahasiswa();
+	$data['prodi'] = $this->prodi_model->get_prodi1();
 	$this->load->view('mahasiswa',$data);
 	}
 
@@ -295,7 +298,7 @@ function addproposalta(){
 	$data['tugasakhir'] = $this->tugasakhir_model->get_tugasakhir();
 	$data['mahasiswa'] = $this->mahasiswa_model->get_mahasiswa();
 	$data['proposalta'] = $this->proposalta_model->get_proposalta();
-	$data['dosen'] = $this->dosen_model->get_dosen();
+	$data['dosen'] = $this->dosen_model->get_dosen();			
 	$this->load->view('ta',$data);
 	}
 
@@ -307,28 +310,93 @@ function addproposalta(){
 
 function addta(){
 	 $NoTA = $this->uri->segment(3);
-	$tugasakhir = array('NoProposal' => $this->input->post('NoProposal'),
+	 $simpanfile=$this->ta_upload();
+	 if($simpanfile==""){
+	 	$tugasakhir = array('NoProposal' => $this->input->post('NoProposal'),
 		'JudulTA' => $this->input->post('JudulTA'),
 		'TahunTA' => $this->input->post('TahunTA'),
 		'NIM' => $this->input->post('NIM'),
 		'TglDisetujui' => $this->input->post('TglDisetujui'),
 		'NIPPembimbing1' => $this->input->post('NIPPembimbing1'),
 		'NIPPembimbing2' => $this->input->post('NIPPembimbing2'),
-		'FolderSoftCopyLaporan' => $this->input->post('FolderSoftCopyLaporan'),
 		'FolderSoftCopySource'=> $this->input->post('FolderSoftCopySource'),
 		'Status' => $this->input->post('Status'));
 
+
+	 }else{
+	 	$tugasakhir = array('NoProposal' => $this->input->post('NoProposal'),
+		'JudulTA' => $this->input->post('JudulTA'),
+		'TahunTA' => $this->input->post('TahunTA'),
+		'NIM' => $this->input->post('NIM'),
+		'TglDisetujui' => $this->input->post('TglDisetujui'),
+		'NIPPembimbing1' => $this->input->post('NIPPembimbing1'),
+		'NIPPembimbing2' => $this->input->post('NIPPembimbing2'),
+		'FolderSoftCopyLaporan' => $simpanfile,
+		'FolderSoftCopySource'=> $this->input->post('FolderSoftCopySource'),
+		'Status' => $this->input->post('Status'));
+
+	 }
+
+	
 	if($NoTA!=0){
 		$this->tugasakhir_model->update($NoTA,$tugasakhir);
 
 	}else{
-	$NoTA = $this->tugasakhir_model->save($tugasakhir);
+		
+	 $NoTA = $this->tugasakhir_model->save($tugasakhir);
 
 	}
 	
     redirect('tugasakhir/ta');
 }
+function ta_upload()
+	{
+        $config['upload_path'] = './uploadta/'; 
+		$config['overwrite'] = 'FALSE';
+		$config['allowed_types'] = 'doc|docx|pdf|zip|rar';
+		$config['max_size']	= '5120'; 
+		$config['max_width']  = '0';
+		$config['max_height']  = '0';
+		// $config['file_name']  = 'rama1';
+		$this->upload->initialize($config);
+		// $this->load->library('upload', $config);
+		if ( ! $this->upload->do_upload('FolderSoftCopyLaporan'))
+		{
+			$upload_data = $this->upload->data(); 
+			$file_name = $upload_data['file_name'];
+			// $data['error']= $this->upload->display_errors();
+			// $data['message']='Upload Fail'; 
+			// $data['go']=$file_name; //pesan jika proses upload berhasil
+				// $this->load->view('test',$data);
+			// $this->content();
+			return $file_name;
+		}else{
+		$upload_data = $this->upload->data(); 
+		$file_name = $upload_data['file_name'];
+		// $data['error']= "";
+		// $data['message']='Upload Success'; //pesan jika proses upload berhasil
+		// // $data['go']=$file_name; //pesan jika proses upload berhasil
+		// $this->load->view('test',$data);
+		// $this->content();}	
+		return $file_name;
+	
+        }
+}
+	 function downloadta(){
+		  $name=$this->uri->segment(3);	
+		  $path="./uploadta/".$name;
 
+	 	  if(file_exists($path)){
+	 	  	$file = file_get_contents($path);	
+	 	  	 force_download($name, $file);
+	 	  	}else{
+	 	  		echo "File not Found !!";
+	 	  		 redirect('tugasakhir/ta','refresh');
+	 	  	};
+
+		
+		
+	}
 
 	// END tugasakhir FUNCTION
 

@@ -85,8 +85,8 @@
                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0" id="mydata">
                   <thead>
                     <tr>
-                      <th>No</th>
-                      <th>Kode Program Studi</th>
+                      <th width="20">No</th>
+                      <th width="160">Kode Program Studi</th>
                       <th>Jurusan</th>
                       <th>Nama Program Studi</th>
                       <th>No. Telepon</th>

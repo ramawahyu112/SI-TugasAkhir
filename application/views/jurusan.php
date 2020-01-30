@@ -83,8 +83,8 @@
                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0" id="mydata">
                   <thead>
                     <tr>
-                      <th>No</th>
-                      <th>Kode Jurusan</th>
+                      <th width="20">No</th>
+                      <th width="110">Kode Jurusan</th>
                       <th>Nama Jurusan</th>
                       <th>Nama Ketua Jurusan</th>
                       <th>Nomor Telepon</th>
