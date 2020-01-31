@@ -332,8 +332,16 @@ function addkaprodi(){
 
 	function deleteproposalta(){
     $NoProposal = $this->uri->segment(3);
+    $good = $this->uri->segment(4);
     $this->proposalta_model->delete($NoProposal);
-    redirect('tugasakhir/proposalta');
+
+      if($good==0){
+      	 redirect('tugasakhir/proposalta');
+     	
+     	}else{
+     		 redirect('tugasakhir/userproposal');
+     	}
+   
 }
 
 function addproposalta(){
@@ -369,9 +377,23 @@ function addproposalta(){
 	}
 
 	function deleteta(){
+
     $NoTA = $this->uri->segment(3);
+     $good = $this->uri->segment(4);
+    
+ 	 
     $this->tugasakhir_model->delete($NoTA);
-    redirect('tugasakhir/ta');
+
+     if($good==0){
+      	  redirect('tugasakhir/ta');
+     	
+     	}else{
+     		 redirect('tugasakhir/userta');
+     	}
+   
+   
+
+  
 }
 
 	function updatetaone(){
@@ -516,11 +538,116 @@ function changepicture()
 		$upload_data = $this->upload->data(); 
 		$file_name = $upload_data['file_name'];
 		$this->login_model->updateone($NIM,$file_name);
-			
+			redirect('tugasakhir/userindex');
 	
 	}
+	}
+
+
+	function userproposal()
+	{
+	// $data['user'] = $datauser;
+		$nimnew=$this->session->userdata('nim');
+		$NoProposal = $this->uri->segment(3);
+
+		$data['dosen'] = $this->dosen_model->get_dosen();
+		$data['proposalta'] = $this->proposalta_model->get_proposaltauser($nimnew);
+		if($NoProposal!=0){
+		$data['proposaltaget'] = $this->proposalta_model->get_by_id($NoProposal);
+
+		}else{
+			$data['proposaltaget'] =0;
+		}
+		
+		
+		$data['user']=$this->login_model->get_by_id($nimnew);
+		
+
+	$this->load->view('userproposal', $data);
+
+	}
+
+	function userproposaladd()
+	{
+	// $data['user'] = $datauser;
+
+	$NoProposal = $this->uri->segment(3);
+	$proposalta = array('JudulProposal' => $this->input->post('JudulProposal'),
+		'TahunProposal' => $this->input->post('TahunProposal'),
+		'NIM' => $this->input->post('NIM'),
+		'NIPPembimbing1' => $this->input->post('NIPPembimbing1'));
+
+	if($NoProposal!=0){
+		$this->proposalta_model->update($NoProposal,$proposalta);
+
+	}else{
+	$NoProposal = $this->proposalta_model->save($proposalta);
+
+	}
 	
-        }
+    redirect('tugasakhir/userproposal');
+		
+
+	}
+	//////USER TA////
+
+	function userta()
+	{
+	// $data['user'] = $datauser;
+		$nimnew=$this->session->userdata('nim');
+		$NoTA = $this->uri->segment(3);
+		$data['tugasakhir'] = $this->tugasakhir_model->get_tugasakhiruser($nimnew);		
+	
+		if($NoTA!=0){
+		$data['proposaltaget'] = $this->tugasakhir_model->get_by_id($NoTA);
+
+		}else{
+			$data['proposaltaget'] =0;
+		}
+		
+		
+		$data['user']=$this->login_model->get_by_id($nimnew);
+		
+
+	$this->load->view('userta', $data);
+
+	}
+
+	function usertaadd()
+	{
+	 $NoTA = $this->uri->segment(3);
+	 $simpanfile=$this->ta_upload();
+	 if($simpanfile==""){
+	 	$tugasakhir = array('NoProposal' => $this->input->post('NoProposal'),
+		'JudulTA' => $this->input->post('JudulTA'),
+		'TahunTA' => $this->input->post('TahunTA'),
+		'NIM' => $this->input->post('NIM'));
+
+
+	 }else{
+	 	$tugasakhir = array('NoProposal' => $this->input->post('NoProposal'),
+		'JudulTA' => $this->input->post('JudulTA'),
+		'TahunTA' => $this->input->post('TahunTA'),
+		'NIM' => $this->input->post('NIM'),
+		'FolderSoftCopyLaporan' => $simpanfile);
+
+	 }
+
+	
+	if($NoTA!=0){
+		$this->tugasakhir_model->update($NoTA,$tugasakhir);
+
+	}else{
+		
+	 $NoTA = $this->tugasakhir_model->save($tugasakhir);
+
+	}
+	
+    redirect('tugasakhir/userta');
+    	}
+
+
+
 
 
 	////USER PAGE///

@@ -7,6 +7,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <meta name="description" content="">
   <meta name="author" content="">
+    <?php   if($this->session->userdata('status') != "login"){
+      redirect('tugasakhir/auth');
+    } ?>
    <script type="text/javascript">
             function alertFilename()
             {
@@ -33,13 +36,21 @@
         </div>
         <div class="sidebar-brand-text ">SI TA TEKNIK ELEKTRO</div>
       </a>
-      <hr class="sidebar-divider ">
+      <hr class="sidebar-divider  ">
       <li class="nav-item active">
 
-        <tr>
-          <td> <img class="img-profile " src="<?php echo base_url() ?>assets/img/boy.png" style="max-width: 50px"> </td>
-          <td> <?php echo $NamaMhs; ?></td>
-        </tr>
+       
+          <img class="img-profile " src="<?php
+
+            if($foto==""){
+                        $link="assets/img/boy.png";
+                    }else{
+                         $link="assets/uploadimage/".$foto;
+                    }
+
+                     echo base_url().$link?>" style="max-width: 50px"> 
+          <?php echo $NamaMhs; ?>
+
         
        
       </li>
@@ -53,19 +64,17 @@
           <span>Profile Mahasiswa</span>
         </a>
       </li>
-      <li class="nav-item">
-        <a class="nav-link collapsed" href="<?php echo site_url('tugasakhir/kaprodi');?>" data-toggle="collapse" data-target="#collapseTable" aria-expanded="true"
-          aria-controls="collapseTable">
-          <i class="fas fa-fw fa-table"></i>
+       <li class="nav-item">
+        <a class="nav-link" href="<?php echo site_url('tugasakhir/userproposal');?>">
+          <i class="fas fa-book"></i>
+          <span>Proposal TA</span>
+        </a>
+      </li>
+       <li class="nav-item">
+        <a class="nav-link" href="<?php echo site_url('tugasakhir/userta');?>">
+          <i class="fas fa-book"></i>
           <span>Tugas Akhir</span>
         </a>
-        <div id="collapseTable" class="collapse" aria-labelledby="headingTable" data-parent="#accordionSidebar">
-          <div class="bg-white py-2 collapse-inner rounded">
-            <h6 class="collapse-header">Tugas Akhir</h6>
-            <a class="collapse-item" href="#">Proposal Tugas Akhir</a>
-            <a class="collapse-item" href="#">Tugas Akhir</a>
-          </div>
-        </div>
       </li>
       <!-- <li class="nav-item">
         <a class="nav-link" href="ui-colors.html">
@@ -265,7 +274,14 @@
             <li class="nav-item dropdown no-arrow">
               <a class="nav-link dropdown-toggle" href="<?php echo site_url('tugasakhir/logout');?>" id="userDropdown" role="button" data-toggle="dropdown"
                 aria-haspopup="true" aria-expanded="false">
-                <img class="img-profile rounded-circle" src="<?php echo base_url() ?>assets/img/boy.png" style="max-width: 60px">
+                <img class="img-profile rounded-circle" src="<?php 
+                 if($foto==""){
+                        $link="assets/img/boy.png";
+                    }else{
+                         $link="assets/uploadimage/".$foto;
+                    }
+
+                     echo base_url().$link ?>" style="max-width: 60px">
                 <span class="ml-2 d-none d-lg-inline text-white small"><?php echo $this->session->userdata('nama'); ?></span>
               </a>
               <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
