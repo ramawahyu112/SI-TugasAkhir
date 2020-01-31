@@ -1,95 +1,84 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-
-  <meta charset="utf-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <meta name="description" content="">
-  <meta name="author" content="">
-
-  <link href="<?php echo base_url() ?>assets/img/logo/logo.jpeg" rel="icon">
+	  <link href="<?php echo base_url() ?>assets/img/logo/logo.jpeg" rel="icon">
   <title>SI TA TEKNIK ELEKTRO</title>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <!-- Custom fonts for this template-->
-   <link href="<?php echo base_url() ?>assets/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
-  <link href="(https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i')" rel="stylesheet">
+	<link rel="stylesheet" type="text/css" href="<?php echo base_url() ?>assets/fonts/iconic/css/material-design-iconic-font.min.css">
 
-  <!-- Custom styles for this template-->
-  <link href="<?php echo base_url() ?>css/sb-admin-2.min.css" rel="stylesheet">
-  <link href="<?php echo base_url() ?>assets/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
+	<link rel="stylesheet" type="text/css" href="<?php echo base_url() ?>assets/vendor/animsition/css/animsition.min.css">
 
+	<link rel="stylesheet" type="text/css" href="<?php echo base_url() ?>assets/css/util.css">
+	<link rel="stylesheet" type="text/css" href="<?php echo base_url() ?>assets/css/main.css">
+<!--===============================================================================================-->
 </head>
+<body>
+	
+	<div class="limiter">
+		<div class="container-login100  "  style="background-image: url('<?php echo base_url() ?>assets/img/logo/bg-01.jpg');background-position: center;">
+			<div class="wrap-login100">
+				<form class="login100-form validate-form"  method="post" action="<?php echo site_url('tugasakhir/akses_login');?>">
+					<span class="login100-form-title p-b-26">
+						SI Tugas Akhir
+					</span>
+					<span class="login100-form-title p-b-48">
+						 <img width="180" height="130" src="<?php echo base_url() ?>assets/img/logo/logo.png">
+					</span>
 
-<body class="bg-gradient-primary">
+					<div class="wrap-input100 validate-input" >
+						<input class="input100" type="text" name="username">
+						<span class="focus-input100" data-placeholder="Username"></span>
+					</div>
 
-  <div class="container">
+					<div class="wrap-input100 validate-input" data-validate="password">
+						<span class="btn-show-pass">
+							<i class="zmdi zmdi-eye"></i>
+						</span>
+						<input class="input100" type="password" name="password">
+						<span class="focus-input100" data-placeholder="Password"></span>
+					</div>
 
-    <!-- Outer Row -->
-    <div class="row justify-content-center">
 
-      <div class="col-xl-10 col-lg-12 col-md-9">
+					<div class="text-right p-t-8 p-b-10">
+						<a href="#">
+							Lupa password?
+						</a>
+					</div>
 
-        <div class="card o-hidden border-0 shadow-lg my-5">
-          <div class="card-body p-0">
-            <!-- Nested Row within Card Body -->
-            <div class="row">
-              <div class="col-lg-6 d-none d-lg-block bg-login-image"></div>
-              <div class="col-lg-6">
-                <div class="p-5">
-                  <div class="text-center">
-                    <h1 class="h4 text-gray-900 mb-4">Login Page</h1>
-                  </div>
-                  <form class="user" method="post" action="<?php echo site_url('tugasakhir/login');?>">
-                    <div class="form-group">
-                      <input type="username" class="form-control form-control-user" id="exampleInputEmail" aria-describedby="emailHelp" placeholder="Masukkan Username">
-                    </div>
-                    <div class="form-group">
-                      <input type="password" class="form-control form-control-user" id="exampleInputPassword" placeholder="Masukkan Password">
-                    </div>
-                    <div class="form-group">
+					<div class="form-group">
                       <div class="custom-control custom-checkbox small">
                         <input type="checkbox" class="custom-control-input" id="customCheck">
                         <label class="custom-control-label" for="customCheck">Remember Me</label>
                       </div>
                     </div>
-                    <a href="index.html" class="btn btn-google btn-user btn-block">
-                      <i class="fab fa-google fa-fw"></i> Login 
-                    </a>
-                    <hr>
-                    
-                   
-                  </form>
-                  <hr>
-                  <div class="text-center">
-                    <a class="small" href="forgot-password.html">Lupa Password?</a>
-                  </div>
-                  <div class="text-center">
-       <!--              <a class="small" href="register.html">Create an Account!</a> -->
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
 
-      </div>
+					<div class="container-login100-form-btn">
+						<div class="wrap-login100-form-btn">
+							<div class="login100-form-bgbtn"></div>
+							<button class="login100-form-btn">
+								Login
+							</button>
+						</div>
+					</div>
 
-    </div>
+					
+				</form>
+			</div>
+		</div>
+	</div>
+	
 
-  </div>
-
-  <!-- Bootstrap core JavaScript-->
-  <script src="<?php echo base_url()?>assets/jquery/jquery.min.js"></script>
-  <script src="<?php echo base_url()?>assets/bootstrap/js/bootstrap.bundle.min.js"></script>
-
-  <!-- Core plugin JavaScript-->
-  <script src="<?php echo base_url()?>assets/jquery-easing/jquery.easing.min.js"></script>
-
-  <!-- Custom scripts for all pages-->
-  <script src="<?php echo base_url()?>js/sb-admin-2.min.js"></script>
+	<div id="dropDownSelect1"></div>
+	
+<!--===============================================================================================-->
+	<script src="<?php echo base_url() ?>assets/vendor/jquery/jquery-3.2.1.min.js"></script>
+<!--===============================================================================================-->
+	<script src="<?php echo base_url() ?>assets/vendor/animsition/js/animsition.min.js"></script>
+	<script src="<?php echo base_url() ?>assets/vendor/countdowntime/countdowntime.js"></script>
+<!--===============================================================================================-->
+	<script src="<?php echo base_url() ?>assets/js/main.js"></script>
 
 </body>
-
 </html>

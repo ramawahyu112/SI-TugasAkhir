@@ -44,5 +44,11 @@ class tugasakhir_model extends CI_Model {
 		$this->db->where($this->primary_key, $id);
 		$this->db->update($this->table_name, $akun);
 	}
+
+	function updateone($id, $one){
+		$this->db->set('Status', $one, FALSE);
+		$this->db->where($this->primary_key, $id);
+		$this->db->update($this->table_name);
+	}
 	
 }

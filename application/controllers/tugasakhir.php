@@ -16,6 +16,9 @@ class tugasakhir extends CI_Controller {
 			$this->load->model('kaprodi_model','',TRUE);
 			$this->load->model('proposalta_model','',TRUE);
 			$this->load->model('tugasakhir_model','',TRUE);
+			$this->load->model('login_model','',TRUE);
+
+		
 			
 
 	}
@@ -24,8 +27,69 @@ class tugasakhir extends CI_Controller {
 	{
 			$this->load->view('login');
 			
-		// $this->load->view('halamanutama');
 	}
+
+	function utama()
+	{
+			$this->load->view('halamanutama');
+			
+	}
+	// LOGOUT
+	function akses_login(){
+		$username = $this->input->post('username');
+		$password = $this->input->post('password');
+		$where = array(
+			'Username' => $username,
+			'Password' => $password
+			);
+		$cek = $this->login_model->cek_login("dosen",$where)->num_rows();
+		if($cek > 0){
+ 
+			$data_session = array(
+				'nama' => $username,
+				'status' => "login"
+				);
+ 
+			$this->session->set_userdata($data_session);
+ 
+			$this->load->view('halamanutama'); //halaman dosen
+ 
+		}else{
+			$cek1 = $this->login_model->cek_login("mahasiswa",$where)->num_rows();
+			$cek1data = $this->login_model->cek_login("mahasiswa",$where);
+			foreach ($cek1data->result() as $i) :
+				$NIM=$i->NIM;
+				endforeach;
+			if($cek1 > 0){
+ 
+			$data_session = array(
+				'nama' => $username,
+				'status' => "login",
+				'nim' => $NIM
+				);
+			$this->session->set_userdata($data_session);
+ 
+		
+ 
+			$this->userindex();
+ 
+		}else{
+			redirect('tugasakhir');
+		}
+
+
+			
+		
+		}
+
+	}
+
+	function logout(){
+		$this->session->sess_destroy();
+		redirect('tugasakhir');
+	}
+
+	// LOGOUT
 
 	// START ACCOUNT FUNCTION
 	function mahasiswa()
@@ -310,6 +374,13 @@ function addproposalta(){
     redirect('tugasakhir/ta');
 }
 
+	function updatetaone(){
+    $NoTA = $this->uri->segment(3);
+    $status = $this->uri->segment(4);
+    $this->tugasakhir_model->updateone($NoTA, $status);
+    redirect('tugasakhir/ta');
+}
+
 function addta(){
 	 $NoTA = $this->uri->segment(3);
 	 $simpanfile=$this->ta_upload();
@@ -400,8 +471,58 @@ function ta_upload()
 
 	// END tugasakhir FUNCTION
 
-function login()
+function auth()
 	{
+	$this->load->view('404');
+
+	}
+
+
+//=========================================================================================================================
+
+
+
+////USER PAGE////
+	function userindex()
+	{
+	// $data['user'] = $datauser;
+		$nimnew=$this->session->userdata('nim');
+
+		$data['user']=$this->login_model->get_by_id($nimnew);
+		
+
+	$this->load->view('profileuser', $data);
+
+	}
+function changepicture()
+	{
+		 $NIM = $this->uri->segment(3);
+
+
+        $config['upload_path'] = './assets/uploadimage/'; 
+		$config['overwrite'] = 'FALSE';
+		$config['allowed_types'] = 'jpg|jpeg|png';
+		$config['max_size']	= '5120'; 
+		$config['max_width']  = '0';
+		$config['max_height']  = '0';
+		// $config['file_name']  = 'rama1';
+		$this->upload->initialize($config);
+		// $this->load->library('upload', $config);
+		if ( ! $this->upload->do_upload('fotouser'))
+		{
+			echo "Errror !!";
+			
+		}else{
+		$upload_data = $this->upload->data(); 
+		$file_name = $upload_data['file_name'];
+		$this->login_model->updateone($NIM,$file_name);
+			
 	
 	}
+	
+        }
+
+
+	////USER PAGE///
+
 }

@@ -159,10 +159,12 @@
                         $count++;
 
                         if($row->Status=="1"){
-                          $stt="Disetujui";
+                          $link='updatetaone/'.$row->NoTA.'/0';
+                          $stt='<a href="'.$link.'" class="btn btn-sm  btn-success">Disetujui </a>';
 
                         }else{
-                           $stt="Belum Disetujui";
+                           $link='updatetaone/'.$row->NoTA.'/1';
+                           $stt= '<a href="'.$link.'" class="btn btn-sm  btn-danger">BelumDisetujui  </a>';
                         }
 
 
