@@ -43,5 +43,16 @@ class proposalta_model extends CI_Model {
 		$this->db->where($this->primary_key, $id);
 		$this->db->update($this->table_name, $akun);
 	}
+
+	 function get_proposaltauser($id){
+	 	$this->db->select('ta.*,p.NamaDosen as Pembimbing1, ps.NamaDosen as Pembimbing2, m.NamaMahasiswa');
+	 	$this->db->from('proposalta ta');
+	 	$this->db->join('dosen p','ta.NIPPembimbing1=p.NIP');
+	 	$this->db->join('dosen ps','ta.NIPPembimbing2=ps.NIP');
+	 	$this->db->join('mahasiswa m','ta.NIM=m.NIM');
+	 	$this->db->where("ta.NIM", $id);
+    $result = $this->db->get();
+    return $result;
+  }
 	
 }

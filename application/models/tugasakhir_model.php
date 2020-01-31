@@ -50,5 +50,13 @@ class tugasakhir_model extends CI_Model {
 		$this->db->where($this->primary_key, $id);
 		$this->db->update($this->table_name);
 	}
+
+	function get_tugasakhiruser($id){
+	 	$this->db->select('*');
+	 	$this->db->from($this->table_name);
+	 	$this->db->where("NIM", $id);
+    $result = $this->db->get();
+    return $result;
+  }
 	
 }
